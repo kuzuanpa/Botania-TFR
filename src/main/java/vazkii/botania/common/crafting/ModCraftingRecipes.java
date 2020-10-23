@@ -63,6 +63,7 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipePoolDiluted;
 	public static IRecipe recipePoolFabulous;
 	public static IRecipe recipeRuneofWater;
+	public static IRecipe recipeRuneofWater1;
 	public static List<IRecipe> recipesRuneAltar;
 	public static IRecipe recipeLensVelocity;
 	public static IRecipe recipeLensPotency;
@@ -433,13 +434,17 @@ public final class ModCraftingRecipes {
 		recipesManaLens = BotaniaAPI.getLatestAddedRecipes(2);
 		//shui
 				addOreDictRecipe(new ItemStack(ModItems.rune, 1, 0),
-						"BRB", "RWR","LRL",
+						"BRB", "RWR","BRB",
 						'B', "petalBlue",
+						'W', ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS),
+						'R', LibOreDict.LIVING_ROCK);	
+				recipeRuneofWater = BotaniaAPI.getLatestAddedRecipe();		
+				addOreDictRecipe(new ItemStack(ModItems.rune, 1, 0),
+						"LRL", "RWR","LRL",
 						'L', "petalLightBlue",
 						'W', ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_HYDROANGEAS),
 						'R', LibOreDict.LIVING_ROCK);
-				
-				recipeRuneofWater = BotaniaAPI.getLatestAddedRecipe();
+				recipeRuneofWater1 = BotaniaAPI.getLatestAddedRecipe();
 				
 				addOreDictRecipe(new ItemStack(ModBlocks.manaCrucible),
 						" C ", "SMS","SHS",

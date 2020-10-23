@@ -57,7 +57,7 @@ public class ContainerForge extends ContainerTFC
 		ItemStack origStack = null;
 		Slot slot = (Slot)inventorySlots.get(slotNum);
 		Slot[] slotfuel =
-		{ (Slot) inventorySlots.get(7), (Slot) inventorySlots.get(6), (Slot) inventorySlots.get(8), (Slot) inventorySlots.get(5), (Slot) inventorySlots.get(9) };
+		{ (Slot) inventorySlots.get(0), (Slot) inventorySlots.get(1), (Slot) inventorySlots.get(2), (Slot) inventorySlots.get(3), (Slot) inventorySlots.get(4) };
 
 		if(slot != null && slot.getHasStack())
 		{
@@ -73,7 +73,7 @@ public class ContainerForge extends ContainerTFC
 			// From Inventory to forge
 			else
 			{
-				// Fill the fuel slots, and put the remaining stack in storage
+				
 				if(slotStack.getItem() == TFCItems.coal)
 				{
 					int j = 0;
@@ -93,11 +93,11 @@ public class ContainerForge extends ContainerTFC
 							break;
 						}
 					}
-					if (j > 0 && !this.mergeItemStack(slotStack, 10, 14, false))
+					if (j > 0 && !this.mergeItemStack(slotStack, 10, 9, false))
 						return null;
 				}
 				// First try input slots, then storage
-				else if (!this.mergeItemStack(slotStack, 0, 5, false) && !this.mergeItemStack(slotStack, 10, 14, false))
+				else if (!this.mergeItemStack(slotStack, 0, 5, false) && !this.mergeItemStack(slotStack, 10, 9, false))
 					return null;
 			}
 
@@ -114,6 +114,7 @@ public class ContainerForge extends ContainerTFC
 
 		return origStack;
 	}
+
 
 	@Override
 	public void detectAndSendChanges()

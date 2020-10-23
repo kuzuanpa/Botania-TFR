@@ -1500,7 +1500,7 @@ item.botania:elementiumBoots.name=源质钢靴子
 item.botania:elementiumPick.name=源质钢镐
 item.botania:elementium铲.name=源质钢铲
 item.botania:elementium斧头.name=源质钢斧
-item.botania:elementium剑.name=源质钢剑
+item.botania:elementiumSword.name=源质钢剑
 item.elementium.name=源质钢剑
 item.botania:elementiumShears.name=源质钢剪
 item.botania:openBucket.name=无底桶
@@ -2944,7 +2944,7 @@ botania.page.terrasteelArmor4=&1泰拉钢靴子&0
 
 # -- TERRA BLADE
 botania.entry.terraSword=泰拉之刃
-item.terraSword.name=泰拉之刃
+item.botania:terraSword.name=泰拉之刃
 botania.tagline.terraSword=发射激光的剑
 botania.page.terraSword0=&1泰拉之刃&0由&1泰拉钢&0制作而成, 是一把注入了自然之力的剑. 不仅有着相当于&1钻石剑&0的强 度,还会像&1魔钢工具&0一样使用 物品栏的&4魔力&0,但在挥舞时, 有一定几率发出一道相当于 近身伤害的光线.
 botania.page.terraSword1=不会破碎的英雄之剑

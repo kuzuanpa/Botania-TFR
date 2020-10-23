@@ -33,6 +33,8 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
+import com.bioxx.tfc.api.TFCItems;
+
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.api.internal.VanillaPacketDispatcher;
 import vazkii.botania.api.item.IPetalApothecary;
@@ -357,8 +359,10 @@ public class TileAltar extends TileSimpleInventory implements ISidedInventory, I
 					net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
 					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, stack, xc + radius + 32, yc - 8);
 					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(Items.wheat_seeds), xc + radius + 16, yc + 6);
+					RenderItem.getInstance().renderItemIntoGUI(mc.fontRenderer, mc.renderEngine, new ItemStack(TFCItems.seedsWheat), xc + radius + 38, yc + 6);
 					net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 					mc.fontRenderer.drawStringWithShadow("+", xc + radius + 14, yc + 10, 0xFFFFFF);
+					mc.fontRenderer.drawStringWithShadow("or", xc + radius + 32, yc + 10, 0xFFFFFF);
 				}
 
 			net.minecraft.client.renderer.RenderHelper.enableGUIStandardItemLighting();
