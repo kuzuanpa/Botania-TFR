@@ -21,7 +21,7 @@ public class BlockManaForge extends BlockTerraContainer {
 	protected BlockManaForge() {
 		super(Material.rock);
 		setBlockName("manaForge");
-		
+		setHardness(4.0f);
 	}
 	@Override
 	public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9)
