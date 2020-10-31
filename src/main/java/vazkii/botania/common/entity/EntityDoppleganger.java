@@ -723,12 +723,13 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 						if(tries >= 50)
 							teleportTo(source.posX + 0.5, source.posY + 1.6, source.posZ + 0.5);
 
+
 						if(spawnLandmines) {
 							int count = dying && hard ? 7 : 6;
 							for(int i = 0; i < count; i++) {
 								int x = source.posX - 10 + rand.nextInt(20);
+								int y = (int) players.get(rand.nextInt(players.size())).posY;
 								int z = source.posZ - 10 + rand.nextInt(20);
-								int y = worldObj.getTopSolidOrLiquidBlock(x, z);
 
 								EntityMagicLandmine landmine = new EntityMagicLandmine(worldObj);
 								landmine.setPosition(x + 0.5, y, z + 0.5);
@@ -736,8 +737,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 								worldObj.spawnEntityInWorld(landmine);
 							}
 
-						}
-							
+						}	
 						if(!players.isEmpty())
 							for(int pl = 0; pl < playerCount; pl++)
 								for(int i = 0; i < (spawnPixies ? worldObj.rand.nextInt(hard ? 6 : 3) : 1); i++) {

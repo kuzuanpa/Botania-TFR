@@ -22,7 +22,7 @@ public class ItemManasteelHelm extends ItemManasteelArmor implements IManaDiscou
 	}
 
 	public ItemManasteelHelm(String name) {
-		super(0, name);
+		super(ManaSteelPlate,0,0, name);
 	}
 
 	@Override

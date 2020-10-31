@@ -80,7 +80,7 @@ public class EntityPixie extends EntityFlyingCreature {
 			if(Math.sqrt(d3) < 1F) {
 				if(summoner != null) {
 					if(summoner instanceof EntityPlayer)
-						target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) summoner), 80);
+						target.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) summoner), 200);
 					else {
 						target.attackEntityFrom(DamageSource.causeMobDamage(summoner), 60);
 					}

@@ -68,7 +68,7 @@ public class EntityFallingStar extends EntityThrowableCopy {
 	protected void onImpact(MovingObjectPosition pos) {
 		EntityLivingBase thrower = getThrower();
 		if(pos.entityHit != null && thrower != null && pos.entityHit != thrower && !pos.entityHit.isDead) {
-				 pos.entityHit.attackEntityFrom(DamageSource.generic, 500);
+				 pos.entityHit.attackEntityFrom(DamageSource.generic, 600);
 		}
 
 		Block block = worldObj.getBlock(pos.blockX, pos.blockY, pos.blockZ);

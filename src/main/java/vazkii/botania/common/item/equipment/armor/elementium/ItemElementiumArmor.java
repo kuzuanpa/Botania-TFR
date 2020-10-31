@@ -2,6 +2,8 @@ package vazkii.botania.common.item.equipment.armor.elementium;
 
 import java.util.List;
 
+import com.bioxx.tfc.api.Armor;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,9 +19,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ItemElementiumArmor extends ItemManasteelArmor implements IPixieSpawner {
-
-	public ItemElementiumArmor(int type, String name) {
+	
+	private int trueType;
+	public ItemElementiumArmor(Armor armor ,int armorSlot,int type, String name) {
 		super(type, name, BotaniaAPI.elementiumArmorMaterial);
+		armorTypeTFC = armor;
+		this.trueType = armorSlot;
+		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 
 	@Override
@@ -79,6 +85,6 @@ public abstract class ItemElementiumArmor extends ItemManasteelArmor implements 
 	public void addArmorSetDescription(ItemStack stack, List<String> list) {
 		super.addArmorSetDescription(stack, list);
 		addStringToTooltip(StatCollector.translateToLocal("botania.armorset.elementium.desc"), list);
+		
 	}
-
 }

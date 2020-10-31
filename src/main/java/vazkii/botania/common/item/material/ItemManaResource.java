@@ -13,6 +13,12 @@ package vazkii.botania.common.item.material;
 import java.awt.Color;
 import java.util.List;
 
+import com.bioxx.tfc.Core.TFC_Core;
+import com.bioxx.tfc.TileEntities.TEAnvil;
+import com.bioxx.tfc.api.HeatIndex;
+import com.bioxx.tfc.api.HeatRegistry;
+import com.bioxx.tfc.api.TFCItems;
+import com.bioxx.tfc.api.TFC_ItemHeat;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
@@ -21,7 +27,9 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.Achievement;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -40,8 +48,7 @@ import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import com.bioxx.tfc.Items.ItemIngot;
-public class ItemManaResource extends ItemIngot implements IFlowerComponent, IElvenItem, IPickupAchievement {
+public class ItemManaResource extends Item implements IFlowerComponent, IElvenItem, IPickupAchievement {
 
 	final int types = 24;
 	IIcon[] icons;
@@ -53,9 +60,8 @@ public class ItemManaResource extends ItemIngot implements IFlowerComponent, IEl
 	public IIcon nerfBatIcon = null;
 	// end dank_memes
 
-	public ItemManaResource(String m, int amt) {
+	public ItemManaResource() {
 		super();
-		this.setMetal(m, amt);
 		setUnlocalizedName(LibItemNames.MANA_RESOURCE);
 		setHasSubtypes(true);
 		
@@ -184,8 +190,84 @@ public class ItemManaResource extends ItemIngot implements IFlowerComponent, IEl
 	}
 
 	@Override
+	public void addInformation(ItemStack is, EntityPlayer player, List arraylist, boolean flag)
+	{
+		
+		addHeatInformation(is, arraylist);
+		addItemInformation(is, player, arraylist);
+		if (is.hasTagCompound())
+		{
+			NBTTagCompound tag = is.getTagCompound();
+			
+			if (tag.hasKey(TEAnvil.ITEM_CRAFTING_VALUE_TAG) || tag.hasKey(TEAnvil.ITEM_CRAFTING_RULE_1_TAG))
+				arraylist.add(TFC_Core.translate("gui.ItemWorked"));
+		}
+
+	}
+	
+	@Override
 	public Achievement getAchievementOnPickup(ItemStack stack, EntityPlayer player, EntityItem item) {
 		return stack.getItemDamage() == 4 ? ModAchievements.terrasteelPickup : null;
 	}
+	public static void addHeatInformation(ItemStack is, List<String> arraylist)
+	{
+		if (is.hasTagCompound())
+		{
+			if(TFC_ItemHeat.hasTemp(is))
+			{
+				float temp = TFC_ItemHeat.getTemp(is);
+				float meltTemp = -1;
+				HeatIndex hi = HeatRegistry.getInstance().findMatchingIndex(is);
+				if(hi != null)
+					meltTemp = hi.meltTemp;
 
+				if(meltTemp != -1)
+				{
+					if(is.getItem() == TFCItems.stick)
+						arraylist.add(TFC_ItemHeat.getHeatColorTorch(temp, meltTemp));
+					else
+						arraylist.add(TFC_ItemHeat.getHeatColor(temp, meltTemp));
+				}
+			}
+		}
+	}
+	public void addItemInformation(ItemStack is, EntityPlayer player, List<String> arraylist)
+	{
+			if(TFC_ItemHeat.hasTemp(is))
+			{
+				String s = "";
+				if(HeatRegistry.getInstance().isTemperatureDanger(is))
+				{
+					s += EnumChatFormatting.WHITE + TFC_Core.translate("gui.ingot.danger") + " | ";
+				}
+
+				if(HeatRegistry.getInstance().isTemperatureWeldable(is))
+				{
+					s += EnumChatFormatting.WHITE + TFC_Core.translate("gui.ingot.weldable") + " | ";
+				}
+
+				if(HeatRegistry.getInstance().isTemperatureWorkable(is))
+				{
+					s += EnumChatFormatting.WHITE + TFC_Core.translate("gui.ingot.workable");
+				}
+
+				if (!"".equals(s))
+					arraylist.add(s);
+			}
+		}
+	
+	@Override
+	public int getItemStackLimit(ItemStack is)
+	{
+		if (is.hasTagCompound())
+		{
+			NBTTagCompound tag = is.getTagCompound();
+			if (TFC_ItemHeat.hasTemp(is) || tag.hasKey(TEAnvil.ITEM_CRAFTING_VALUE_TAG) || tag.hasKey(TEAnvil.ITEM_CRAFTING_RULE_1_TAG))
+			{
+				return 1;
+			}
+		}
+
+		return super.getItemStackLimit(is);
+	}
 }

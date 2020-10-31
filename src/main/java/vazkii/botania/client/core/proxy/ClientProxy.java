@@ -230,7 +230,11 @@ public class ClientProxy extends CommonProxy {
 		  ModItems.MANA_STEELPickaxe.setTextureName("botania:" +"MANA_STEELPickaxe");
 		  ModItems.elementiumPickaxe.setTextureName("botania:" +"elementiumPickaxe");
 		  ModItems.terrasteelPickaxe.setTextureName("botania:" +"terrasteelPickaxe");
-		 
+		  
+		  ModItems.terrasteelTK.setTextureName("botania:" +"UnfinishedterrasteelHelm");
+		  ModItems.terrasteelXJ.setTextureName("botania:" +"UnfinishedterrasteelChest");
+		  ModItems.terrasteelKZ.setTextureName("botania:" +"UnfinishedterrasteelLegs");
+		  ModItems.terrasteelXZ.setTextureName("botania:" +"UnfinishedterrasteelBoots");
 		initRenderers();
 	}
 

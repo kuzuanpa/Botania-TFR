@@ -331,8 +331,7 @@ public final class LexiconData {
 		flowers.setPriority()
 				.setLexiconPages(new PageText("0"), new PageImage("1", LibResources.ENTRY_FLOWERS), new PageText("2"),
 						new PageCraftingRecipe("3", ModCraftingRecipes.recipesPetals),
-						new PageText("4"),
-						new PageCraftingRecipe("5", ModCraftingRecipes.recipesDyes), new PageText("6"),
+						new PageText("6"),
 						new PageCraftingRecipe("7", ModCraftingRecipes.recipeFertilizerPowder),
 						new PageCraftingRecipe("8", ModCraftingRecipes.recipeFerilizerDye), new PageText("10"),
 						new PageText("12"), new PageCraftingRecipe("11", ModCraftingRecipes.recipesPetalsDouble),

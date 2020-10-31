@@ -52,9 +52,7 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeManasteelBoots;
 	public static IRecipe recipeLexicon;
 	public static List<IRecipe> recipesPetals;
-	public static List<IRecipe> recipesDyes;
 	public static List<IRecipe> recipesPetalBlocks;
-	public static IRecipe recipePestleAndMortar;
 	public static List<IRecipe> recipesTwigWand;
 	public static List<IRecipe> recipesApothecary;
 	public static List<IRecipe> recipesSpreader;
@@ -373,10 +371,6 @@ public final class ModCraftingRecipes {
 			addShapelessOreDictRecipe(new ItemStack(ModItems.petal, 2, i), LibOreDict.FLOWER[i]);
 		recipesPetals = BotaniaAPI.getLatestAddedRecipes(16);
 
-		for(int i = 0; i < 16; i++)
-			addShapelessOreDictRecipe(new ItemStack(ModItems.dye, 1, i), LibOreDict.PETAL[i], LibOreDict.PESTLE_AND_MORTAR);
-		recipesDyes = BotaniaAPI.getLatestAddedRecipes(15);
-
 		// Petal Block Recipes
 		for(int i = 0; i < 16; i++)
 			addOreDictRecipe(new ItemStack(ModBlocks.petalBlock, 1, i),
@@ -385,12 +379,7 @@ public final class ModCraftingRecipes {
 		recipesPetalBlocks = BotaniaAPI.getLatestAddedRecipes(16);
 
 		// Pestle and Mortar Recipe
-		addOreDictRecipe(new ItemStack(ModItems.pestleAndMortar),
-				" S ", "W  ", "B  ",
-				'S', "stickWood",
-				'W', "plankWood",
-				'B', "potteryBowl");
-		recipePestleAndMortar = BotaniaAPI.getLatestAddedRecipe();
+
 
 		// Wand of the Forest Recipes
 		for(int i = 0; i < 16; i++)
@@ -713,29 +702,29 @@ public final class ModCraftingRecipes {
 				'S', LibOreDict.TERRA_STEEL,
 				'R', LibOreDict.RUNE[4],
 				'A', new ItemStack(ModItems.manasteelHelmRevealing));
-		addOreDictRecipe(new ItemStack(ModItems.terrasteelHelm),
-				"TRT", "SAS", " S ",
+		addOreDictRecipe(new ItemStack(ModItems.terrasteelTK),
+				"TRT", "SAS", 
 				'T', LibOreDict.LIVINGWOOD_TWIG,
 				'S', LibOreDict.TERRA_STEEL,
 				'R', LibOreDict.RUNE[4],
 				'A', new ItemStack(ModItems.manasteelHelm));
 		recipeTerrasteelHelm = BotaniaAPI.getLatestAddedRecipe();
-		addOreDictRecipe(new ItemStack(ModItems.terrasteelChest),
-				"TRT", "SAS", " S ",
+		addOreDictRecipe(new ItemStack(ModItems.terrasteelXJ),
+				"TRT", "SAS",
 				'T', LibOreDict.LIVINGWOOD_TWIG,
 				'S', LibOreDict.TERRA_STEEL,
 				'R', LibOreDict.RUNE[5],
 				'A', new ItemStack(ModItems.manasteelChest));
 		recipeTerrasteelChest = BotaniaAPI.getLatestAddedRecipe();
-		addOreDictRecipe(new ItemStack(ModItems.terrasteelLegs),
-				"TRT", "SAS", " S ",
+		addOreDictRecipe(new ItemStack(ModItems.terrasteelKZ),
+				"TRT", "SAS", 
 				'T', LibOreDict.LIVINGWOOD_TWIG,
 				'S', LibOreDict.TERRA_STEEL,
 				'R', LibOreDict.RUNE[6],
 				'A', new ItemStack(ModItems.manasteelLegs));
 		recipeTerrasteelLegs = BotaniaAPI.getLatestAddedRecipe();
-		addOreDictRecipe(new ItemStack(ModItems.terrasteelBoots),
-				"TRT", "SAS", " S ",
+		addOreDictRecipe(new ItemStack(ModItems.terrasteelXZ),
+				"TRT", "SAS", 
 				'T', LibOreDict.LIVINGWOOD_TWIG,
 				'S', LibOreDict.TERRA_STEEL,
 				'R', LibOreDict.RUNE[7],

@@ -31,6 +31,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 import org.lwjgl.opengl.GL11;
 
+
 import vazkii.botania.api.item.IAncientWillContainer;
 import vazkii.botania.api.item.IBaubleRender.Helper;
 import vazkii.botania.api.mana.IManaDiscountArmor;
@@ -54,7 +55,7 @@ public class ItemTerrasteelHelm extends ItemTerrasteelArmor implements IManaDisc
 	}
 
 	public ItemTerrasteelHelm(String name) {
-		super(0, name);
+		super(TerraSteelPlate, 0,0, name);
 	}
 
 	@Override

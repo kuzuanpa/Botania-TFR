@@ -15,7 +15,7 @@ import vazkii.botania.common.lib.LibItemNames;
 public class ItemManaweaveBoots extends ItemManaweaveArmor {
 
 	public ItemManaweaveBoots() {
-		super(3, LibItemNames.MANAWEAVE_BOOTS);
+		super(Weave,3,3, LibItemNames.MANAWEAVE_BOOTS);
 	}
 
 }

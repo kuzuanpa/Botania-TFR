@@ -12,6 +12,8 @@ package vazkii.botania.common.item.equipment.armor.manaweave;
 
 import java.util.List;
 
+import com.bioxx.tfc.api.Armor;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,11 +36,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchievement {
-
 	IIcon iconChristmas;
-	
-	public ItemManaweaveArmor(int type, String name) {
+	private int trueType;
+	public ItemManaweaveArmor(Armor armor ,int armorSlot,int type, String name) {
 		super(type, name, BotaniaAPI.manaweaveArmorMaterial);
+		armorTypeTFC = armor;
+		this.trueType = armorSlot;
+		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 
 	@Override

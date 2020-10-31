@@ -12,7 +12,7 @@ public class ItemElementiumHelm extends ItemElementiumArmor implements IManaDisc
 	}
 
 	public ItemElementiumHelm(String name) {
-		super(0, name);
+		super(EltPlate,0,0, name);
 	}
 
 	@Override

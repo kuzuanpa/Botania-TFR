@@ -14,10 +14,14 @@ public class ModItemHeat{
 		HeatRegistry manager = HeatRegistry.getInstance();
 		
 	HeatRaw manasteelRaw = new HeatRaw(0.3, 1500);
-	
+	HeatRaw terrasteelRaw = new HeatRaw(0.4,2000);
 	manager.addIndex(new HeatIndex(new ItemStack(ModItems.manaResource, 1, 0), manasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
 	manager.addIndex(new HeatIndex(new ItemStack(ModItems.manaResource, 1, 7), manasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
-	manager.addIndex(new HeatIndex(new ItemStack(ModItems.manaResource, 1, 4), manasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
+	manager.addIndex(new HeatIndex(new ItemStack(ModItems.manaResource, 1, 4), terrasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
 		
+	manager.addIndex(new HeatIndex(new ItemStack(ModItems.terrasteelTK,1), terrasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
+	manager.addIndex(new HeatIndex(new ItemStack(ModItems.terrasteelXJ, 1), terrasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
+	manager.addIndex(new HeatIndex(new ItemStack(ModItems.terrasteelKZ, 1), terrasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
+	manager.addIndex(new HeatIndex(new ItemStack(ModItems.terrasteelXZ, 1), terrasteelRaw, new ItemStack(TFCItems.wroughtIronUnshaped,1)));
 }
 }

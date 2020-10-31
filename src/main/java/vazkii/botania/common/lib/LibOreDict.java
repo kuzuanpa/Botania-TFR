@@ -16,7 +16,6 @@ import vazkii.botania.common.item.block.ItemBlockSpecialFlower;
 public final class LibOreDict {
 
 	public static final String LEXICON = "lexicaBotania";
-	public static final String PESTLE_AND_MORTAR = "pestleAndMortar";
 	public static final String TWIG_WAND = "twigWand";
 	public static final String LIVING_WOOD = "livingwood";
 	public static final String LIVING_ROCK = "livingrock";

@@ -12,18 +12,35 @@ package vazkii.botania.common.item.equipment.armor.manasteel;
 
 import java.util.List;
 
+import com.bioxx.tfc.Core.TFC_Core;
+import com.bioxx.tfc.Items.ItemTerra;
+import com.bioxx.tfc.Items.Tools.ItemTerraTool;
+import com.bioxx.tfc.api.Armor;
+import com.bioxx.tfc.api.Crafting.AnvilManager;
+import com.bioxx.tfc.api.Enums.EnumItemReach;
+import com.bioxx.tfc.api.Enums.EnumSize;
+import com.bioxx.tfc.api.Enums.EnumWeight;
+import com.bioxx.tfc.api.Interfaces.IClothing;
+import com.bioxx.tfc.api.Interfaces.ISize;
+
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StatCollector;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 import thaumcraft.api.IRunicArmor;
@@ -45,17 +62,24 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IRunicArmor")
-public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable, IRunicArmor {
-
+public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IManaUsingItem, IPhantomInkable, IRunicArmor,ISize, IClothing{
+	public static Armor ManaSteelPlate = 	new Armor(11, 1000, 1000, 1000, "Mana Steel");
+	public static Armor EltPlate = 	new Armor(12, 2200, 2500, 2200, "Elt Steel");
+	public static Armor Weave = 	new Armor(13, 500, 500, 500, "Weave");
+	public static Armor TerraSteelPlate = 		new Armor(14, 2400, 2700, 2400, "Terra Steel");
+	
 	private static final int MANA_PER_DAMAGE = 70;
 
 	private static final String TAG_PHANTOM_INK = "phantomInk";
-
+	public Armor armorTypeTFC;
 	protected ModelBiped[] models = null;
 	public int type;
-
-	public ItemManasteelArmor(int type, String name) {
+	private int trueType;
+	public ItemManasteelArmor(Armor armor ,int armorSlot,int type, String name) {
 		this(type, name, BotaniaAPI.manasteelArmorMaterial);
+		armorTypeTFC = armor;
+		this.trueType = armorSlot;
+		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 
 	public ItemManasteelArmor(int type, String name, ArmorMaterial mat) {
@@ -161,10 +185,30 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean adv) {
-		if(GuiScreen.isShiftKeyDown())
+		ItemTerra.addSizeInformation(stack, list);
+		ItemTerra.addHeatInformation(stack, list);
+		ItemTerraTool.addSmithingBonusInformation(stack, list);
+		if(GuiScreen.isShiftKeyDown()) {
 			addInformationAfterShift(stack, player, list, adv);
-		else addStringToTooltip(StatCollector.translateToLocal("botaniamisc.shiftinfo"), list);
+			list.add(EnumChatFormatting.WHITE + TFC_Core.translate("gui.Advanced") + ":");
+			list.add(EnumChatFormatting.ITALIC + TFC_Core.translate("gui.Armor.Pierce") + ": " + EnumChatFormatting.AQUA + armorTypeTFC.getPiercingAR());
+			list.add(EnumChatFormatting.ITALIC + TFC_Core.translate("gui.Armor.Slash") + ": " + EnumChatFormatting.AQUA + armorTypeTFC.getSlashingAR());
+			list.add(EnumChatFormatting.ITALIC + TFC_Core.translate("gui.Armor.Crush") + ": " + EnumChatFormatting.AQUA + armorTypeTFC.getCrushingAR());
+			list.add("");
+			if (stack.hasTagCompound())
+			{
+				NBTTagCompound stackTagCompound = stack.getTagCompound();
+
+				if(stackTagCompound.hasKey("creator"))
+					list.add(EnumChatFormatting.ITALIC + TFC_Core.translate("gui.Armor.ForgedBy") + " " + stackTagCompound.getString("creator"));
+			}
+		}
+		else
+			addStringToTooltip(StatCollector.translateToLocal("botaniamisc.shiftinfo"), list);
+			list.add(EnumChatFormatting.DARK_GRAY + TFC_Core.translate("gui.Advanced") + ": (" + TFC_Core.translate("gui.Hold") + " " + EnumChatFormatting.GRAY + TFC_Core.translate("gui.Shift") +
+					EnumChatFormatting.DARK_GRAY + ")");
 	}
+	
 
 	public void addInformationAfterShift(ItemStack stack, EntityPlayer player, List list, boolean adv) {
 		addStringToTooltip(getArmorSetTitle(player), list);
@@ -248,5 +292,96 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	@Optional.Method(modid = "Thaumcraft")
 	public int getRunicCharge(ItemStack itemstack) {
 		return 0;
+	}
+	public int getUnadjustedArmorType()
+	{
+		return trueType;
+	}
+	@Override
+	protected MovingObjectPosition getMovingObjectPositionFromPlayer(World par1World, EntityPlayer par2EntityPlayer, boolean par3)
+	{
+		float f = 1.0F;
+		float f1 = par2EntityPlayer.prevRotationPitch + (par2EntityPlayer.rotationPitch - par2EntityPlayer.prevRotationPitch) * f;
+		float f2 = par2EntityPlayer.prevRotationYaw + (par2EntityPlayer.rotationYaw - par2EntityPlayer.prevRotationYaw) * f;
+		double d0 = par2EntityPlayer.prevPosX + (par2EntityPlayer.posX - par2EntityPlayer.prevPosX) * f;
+		double d1 = par2EntityPlayer.prevPosY + (par2EntityPlayer.posY - par2EntityPlayer.prevPosY) * f + (par1World.isRemote ? par2EntityPlayer.getEyeHeight() - par2EntityPlayer.getDefaultEyeHeight() : par2EntityPlayer.getEyeHeight()); // isRemote check to revert changes to ray trace position due to adding the eye height clientside and player yOffset differences
+		double d2 = par2EntityPlayer.prevPosZ + (par2EntityPlayer.posZ - par2EntityPlayer.prevPosZ) * f;
+		Vec3 vec3 = Vec3.createVectorHelper(d0, d1, d2);
+		float f3 = MathHelper.cos(-f2 * 0.017453292F - (float)Math.PI);
+		float f4 = MathHelper.sin(-f2 * 0.017453292F - (float)Math.PI);
+		float f5 = -MathHelper.cos(-f1 * 0.017453292F);
+		float f6 = MathHelper.sin(-f1 * 0.017453292F);
+		float f7 = f4 * f5;
+		float f8 = f3 * f5;
+		double d3 = 5.0D;
+		if (par2EntityPlayer instanceof EntityPlayerMP)
+		{
+			d3 = ((EntityPlayerMP)par2EntityPlayer).theItemInWorldManager.getBlockReachDistance();
+		}
+		d3 *= getReach(null).multiplier;
+		Vec3 vec31 = vec3.addVector(f7 * d3, f6 * d3, f8 * d3);
+		return par1World.rayTraceBlocks(vec3, vec31, par3);
+	}
+	
+	@Override
+
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	{
+		int i = EntityLiving.getArmorPosition(par1ItemStack);
+		ItemStack itemstack1 = par3EntityPlayer.getCurrentArmor((i-1)%4);
+
+		if (itemstack1 == null)
+		{
+			par3EntityPlayer.setCurrentItemOrArmor(i /*+ 1*/, par1ItemStack.copy()); //Forge: Vanilla bug fix associated with fixed setCurrentItemOrArmor indexs for players.
+			par1ItemStack.stackSize = 0;
+		}
+
+		return par1ItemStack;
+	}
+	@Override
+	public int getBodyPart()
+	{
+		return 3-armorType;
+	}
+
+	@Override
+	public EnumItemReach getReach(ItemStack is)
+	{
+		return EnumItemReach.SHORT;
+	}
+
+	@Override
+	public int getThermal() {
+		return 50;
+	}
+
+	@Override
+	public boolean canStack() {
+		return false;
+	}
+
+	@Override
+	public int getMaxDamage(ItemStack stack)
+	{
+		return (int) (super.getMaxDamage(stack)+(super.getMaxDamage(stack) * AnvilManager.getDurabilityBuff(stack)));
+	}
+
+	@Override
+	public EnumWeight getWeight(ItemStack is)
+	{
+		return EnumWeight.HEAVY;
+	}
+	@Override
+	public EnumSize getSize(ItemStack is)
+	{
+		return EnumSize.LARGE;
+	}
+	@Override
+	public int getItemStackLimit()
+	{
+		if(canStack())
+			return this.getSize(null).stackSize * getWeight(null).multiplier;
+		else
+			return 1;
 	}
 }

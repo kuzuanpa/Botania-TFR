@@ -15,7 +15,7 @@ import vazkii.botania.common.lib.LibItemNames;
 public class ItemManasteelBoots extends ItemManasteelArmor {
 
 	public ItemManasteelBoots() {
-		super(3, LibItemNames.MANASTEEL_BOOTS);
+		super(ManaSteelPlate,3,3, LibItemNames.MANASTEEL_BOOTS);
 	}
 
 }

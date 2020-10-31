@@ -90,7 +90,6 @@ import vazkii.botania.common.item.interaction.thaumcraft.ItemTerrasteelHelmRevea
 import vazkii.botania.common.item.lens.ItemLens;
 import vazkii.botania.common.item.material.ItemDye;
 import vazkii.botania.common.item.material.ItemManaResource;
-import vazkii.botania.common.item.material.ItemPestleAndMortar;
 import vazkii.botania.common.item.material.ItemPetal;
 import vazkii.botania.common.item.material.ItemQuartz;
 import vazkii.botania.common.item.material.ItemRune;
@@ -126,7 +125,6 @@ public final class ModItems {
 	public static Item lexicon;
 	public static Item petal;
 	public static Item dye;
-	public static Item pestleAndMortar;
 	public static Item twigWand;
 	public static Item manaResource;
 	public static Item lens;
@@ -272,16 +270,19 @@ public final class ModItems {
 	public static Item elementiumPickaxe;
 	public static Item MANA_STEELPickaxe;
 	public static Item terrasteelPickaxe;
-
+	
+	public static Item terrasteelXZ;
+	public static Item terrasteelXJ;
+	public static Item terrasteelKZ;
+	public static Item terrasteelTK;
 	
 
 	public static void init() {
 		lexicon = new ItemLexicon();
 		petal = new ItemPetal();
 		dye = new ItemDye();
-		pestleAndMortar = new ItemPestleAndMortar();
 		twigWand = new ItemTwigWand();
-		manaResource = new ItemManaResource("Wrought Iron", 100);
+		manaResource = new ItemManaResource();
 		lens = new ItemLens();
 		rune = new ItemRune();
 		signalFlare = new ItemSignalFlare();
@@ -423,6 +424,10 @@ public final class ModItems {
 		MANA_STEELPickaxe = new ItemPickaxe("MANA_STEELPickaxe");
 		elementiumPickaxe = new ItemPickaxe("elementiumPickaxe");
 		terrasteelPickaxe = new ItemPickaxe("terrasteelPickaxe");
+		terrasteelXJ = new ItemPickaxe("UnfinishedterrasteelChest");
+		terrasteelTK = new ItemPickaxe("UnfinishedterrasteelHelm");
+		terrasteelKZ = new ItemPickaxe("UnfinishedterrasteelLegs");
+		terrasteelXZ = new ItemPickaxe("UnfinishedterrasteelBooots");
 		OreDictionary.registerOre(LibOreDict.LEXICON, lexicon);
 		for(int i = 0; i < 16; i++) {
 			OreDictionary.registerOre(LibOreDict.PETAL[i], new ItemStack(petal, 1, i));
@@ -431,7 +436,6 @@ public final class ModItems {
 		}
 		for(int i = 0; i < 7; i++)
 			OreDictionary.registerOre(LibOreDict.QUARTZ[i], new ItemStack(quartz, 1, i));
-		OreDictionary.registerOre(LibOreDict.PESTLE_AND_MORTAR, pestleAndMortar);
 		OreDictionary.registerOre(LibOreDict.MANA_STEEL, new ItemStack(manaResource, 1, 0));
 		OreDictionary.registerOre(LibOreDict.MANA_PEARL, new ItemStack(manaResource, 1, 1));
 		OreDictionary.registerOre(LibOreDict.MANA_DIAMOND, new ItemStack(manaResource, 1, 2));
