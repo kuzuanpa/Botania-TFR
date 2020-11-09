@@ -142,8 +142,7 @@ public class ItemTerrasteelArmor extends ItemManasteelArmor {
 		
 		else
 				addStringToTooltip(StatCollector.translateToLocal("botaniamisc.shiftinfo"), arraylist);
-			arraylist.add(EnumChatFormatting.DARK_GRAY + TFC_Core.translate("gui.Advanced") + ": (" + TFC_Core.translate("gui.Hold") + " " + EnumChatFormatting.GRAY + TFC_Core.translate("gui.Shift") +
-					EnumChatFormatting.DARK_GRAY + ")");
+
 	}
 	
 

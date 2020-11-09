@@ -205,8 +205,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 		}
 		else
 			addStringToTooltip(StatCollector.translateToLocal("botaniamisc.shiftinfo"), list);
-			list.add(EnumChatFormatting.DARK_GRAY + TFC_Core.translate("gui.Advanced") + ": (" + TFC_Core.translate("gui.Hold") + " " + EnumChatFormatting.GRAY + TFC_Core.translate("gui.Shift") +
-					EnumChatFormatting.DARK_GRAY + ")");
+
 	}
 	
 
