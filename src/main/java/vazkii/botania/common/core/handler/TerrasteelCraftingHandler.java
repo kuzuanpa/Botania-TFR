@@ -89,20 +89,18 @@ public final class TerrasteelCraftingHandler {
 		List<EntityItem> items = item.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 1, z + 1));
 
 		EntityItem diamond = null;
-		EntityItem jlc = null;
-		EntityItem yzg = null;
-
+		EntityItem pearl = null;
 
 		for(EntityItem otherItem : items) {
 			if(otherItem == item)
 				continue;
 
 			ItemStack stack = otherItem.getEntityItem();
-			if(stack.getItem() != ModItems.manaResource && stack.stackSize != 4) {
+			if(stack.getItem() == ModItems.manaResource && stack.stackSize == 1) {
 				int meta = stack.getItemDamage();
-				if(meta == 8) {
-					if(jlc == null) {
-						jlc = otherItem;
+				if(meta == 7) {
+					if(pearl == null) {
+						pearl = otherItem;
 						continue;
 					} else return -1;
 				} else if(meta == 2) {
@@ -110,25 +108,17 @@ public final class TerrasteelCraftingHandler {
 						diamond = otherItem;
 						continue;
 					} else return -1;
-				} else if(meta == 7) {
-					if(yzg == null) {
-						yzg = otherItem;
-						continue;
-					}
-				}
-				
+				} else return -1;
 			} else return -1;
 		}
 
-		if(diamond != null && jlc != null) {
+		if(diamond != null && pearl != null) {
 			int time = getTimeInCrafting(item);
 			if(time > 0) {
 				diamond.delayBeforeCanPickup = 1;
 				diamond.age = 0;
-				jlc.delayBeforeCanPickup = 1;
-				jlc.age = 0;
-				yzg.delayBeforeCanPickup = 1;
-				yzg.age = 0;
+				pearl.delayBeforeCanPickup = 1;
+				pearl.age = 0;
 				item.delayBeforeCanPickup = 1;
 				item.age = 0;
 			}

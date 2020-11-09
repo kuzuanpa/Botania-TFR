@@ -68,7 +68,7 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	public static Armor Weave = 	new Armor(13, 500, 500, 500, "Weave");
 	public static Armor TerraSteelPlate = 		new Armor(14, 2400, 2700, 2400, "Terra Steel");
 	
-	private static final int MANA_PER_DAMAGE = 70;
+	private static final int MANA_PER_DAMAGE = 100;
 
 	private static final String TAG_PHANTOM_INK = "phantomInk";
 	public Armor armorTypeTFC;

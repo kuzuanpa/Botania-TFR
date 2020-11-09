@@ -27,7 +27,7 @@ import vazkii.botania.common.lexicon.LexiconData;
 public class SubTileEndoflame extends SubTileGenerating {
 
 	private static final String TAG_BURN_TIME = "burnTime";
-	private static final int FUEL_CAP = 100000;
+	private static final int FUEL_CAP = 32000;
 	private static final int RANGE = 3;
 
 	int burnTime = 0;
@@ -84,13 +84,13 @@ public class SubTileEndoflame extends SubTileGenerating {
 			}
 		}
 	}
-@Override
-public void addMana(int mana) {
-	this.mana = Math.min(getMaxMana(), this.mana + mana)*2;
-}
+	@Override
+	public void addMana(int mana) {
+		this.mana = Math.min(getMaxMana(), this.mana + mana*2);
+	}
 	@Override
 	public int getMaxMana() {
-		return 2000;
+		return 1200;
 	}
 
 	@Override

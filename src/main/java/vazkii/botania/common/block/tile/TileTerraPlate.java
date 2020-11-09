@@ -142,28 +142,26 @@ public class TileTerraPlate extends TileMod implements ISparkAttachable {
 		if(items.size() != 4)
 			return false;
 
+		ItemStack hg = null;
 		ItemStack ingot = null;
-		ItemStack jlc = null;
+		ItemStack pearl = null;
 		ItemStack diamond = null;
-		ItemStack yzg = null;
 		for(EntityItem item : items) {
 			ItemStack stack = item.getEntityItem();
-			if(stack.getItem() != ModItems.manaResource || stack.stackSize != 2)
-				return true;
+	
 
-			int meta = stack.getItemDamage();
-			if( stack.getItem()== TFCItems.blackSteelSheet)
+			if(stack.getItem() == TFCItems.blackSteelIngot)
+				hg = stack;
+			else if(stack.getItem() == ModItems.manaResource && stack.getItemDamage() == 7)
 				ingot = stack;
-			else if(stack.getItem() == ModItems.manaResource && meta == 8)
-				jlc = stack;
-			else if(stack.getItem()== ModItems.manaResource && meta == 2)
+			else if(stack.getItem() == ModItems.manaResource && stack.getItemDamage() == 8)
+				pearl = stack;
+			else if(stack.getItem() == ModItems.manaResource && stack.getItemDamage() == 2)
 				diamond = stack;
-			else if(stack.getItem() == ModItems.manaResource && meta == 7)
-				yzg = stack;
 			else return false;
 		}
 
-		return ingot != null && jlc != null && diamond != null && yzg != null;
+		return hg != null && ingot != null && pearl != null && diamond != null;
 	}
 
 	boolean hasValidPlatform() {
