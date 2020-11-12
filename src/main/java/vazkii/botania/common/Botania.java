@@ -47,7 +47,7 @@ import net.minecraftforge.common.MinecraftForge;
 public class Botania {
 
 	public static boolean gardenOfGlassLoaded = false;
-
+	public static boolean gregLoaded = false;
 	public static boolean thaumcraftLoaded = false;
 	public static boolean bcTriggersLoaded = false;
 	public static boolean bloodMagicLoaded = false;
@@ -72,7 +72,7 @@ public class Botania {
 		coloredLightsLoaded = Loader.isModLoaded("easycoloredlights");
 		etFuturumLoaded = Loader.isModLoaded("etfuturum");
 		storageDrawersLoaded = Loader.isModLoaded("StorageDrawers");
-		
+		gregLoaded= Loader.isModLoaded("gregtech");
 		lightHelper = coloredLightsLoaded ? new LightHelperColored() : new LightHelperVanilla();
 
 		proxy.registerTickHandler();

@@ -29,6 +29,8 @@ import org.apache.logging.log4j.Level;
 
 import com.bioxx.tfc.api.TFCBlocks;
 import com.bioxx.tfc.api.TFCItems;
+import com.bioxx.tfc.api.Crafting.QuernManager;
+import com.bioxx.tfc.api.Crafting.QuernRecipe;
 
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.Botania;
@@ -311,6 +313,12 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipemanaForge;
 	public static List<IRecipe> recipesPickaxe;
 	public static void init() {
+		if(!Botania.gregLoaded) {
+
+			QuernManager manager = QuernManager.getInstance();
+			for(int i = 0; i < 16; i++)
+			manager.addRecipe(new QuernRecipe(new ItemStack(ModItems.petal, 1, i), new ItemStack(ModItems.dye, 1, i)));
+		}
 		addOreDictRecipe(new ItemStack(Blocks.beacon),
 				"AEA", "ATA","BBB",
 				'A', new ItemStack(Blocks.glass),

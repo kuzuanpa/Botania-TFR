@@ -189,7 +189,7 @@ public class TECrucible extends NetworkTileEntity implements IInventory,IManaRec
 					if(addMetal(mType, ((ISmeltable)itemToSmelt).getMetalReturnAmount(stackToSmelt)))
 					{
 						temperature *= 0.9f;
-						cookDelay = 40;
+						cookDelay = 25;
 						if(stackToSmelt.stackSize <= 1)
 							storage[0] = null;
 						else
