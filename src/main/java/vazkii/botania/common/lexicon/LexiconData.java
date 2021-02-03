@@ -876,10 +876,6 @@ public final class LexiconData {
 		dirtRod = new BLexiconEntry(LibLexicon.TOOL_DIRT_ROD, categoryTools);
 		dirtRod.setLexiconPages(new PageText("0"), new PageCraftingRecipe("1", ModCraftingRecipes.recipeDirtRod));
 
-		terraformRod = new BLexiconEntry(LibLexicon.TOOL_TERRAFORM_ROD, categoryTools);
-		terraformRod.setLexiconPages(new PageText("0"), new PageText("1"), new PageText("2"),
-				new PageCraftingRecipe("3", ModCraftingRecipes.recipeTerraformRod));
-
 		manasteelGear = new BLexiconEntry(LibLexicon.TOOL_MANASTEEL_GEAR, categoryTools);
 		manasteelGear.setPriority().setLexiconPages(new PageText("0"), new PageText("10"));
 
@@ -914,7 +910,7 @@ public final class LexiconData {
 
 		rainbowRod = new ALexiconEntry(LibLexicon.TOOL_RAINBOW_ROD, categoryTools);
 		rainbowRod.setLexiconPages(new PageText("0"), new PageText("1"), new PageText("6"),
-				new PageCraftingRecipe("2", ModCraftingRecipes.recipeRainbowRod),
+				
 				new PageCraftingRecipe("3", ModCraftingRecipes.recipeBifrost),
 				new PageCraftingRecipe("4", ModCraftingRecipes.recipeShimmerrock),
 				new PageCraftingRecipe("5", ModCraftingRecipes.recipeShimmerwoodPlanks),

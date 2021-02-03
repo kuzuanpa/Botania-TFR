@@ -13,8 +13,6 @@ package vazkii.botania.common.crafting;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bioxx.tfc.api.TFCItems;
-
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -54,10 +52,8 @@ public final class ModManaInfusionRecipes {
 		manaPearlRecipe = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 1), new ItemStack(Items.ender_pearl), 6000);
 
 		manaDiamondRecipes = new ArrayList();
-		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 2, 2), "gemDiamond", 10000));
-		
-		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), new ItemStack(TFCItems.gemDiamond,1,1),10000));
-
+		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), "gemDiamond", 10000));
+		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModItems.manaResource, 1, 2), "dustDiamond", 10000));
 		manaDiamondRecipes.add(BotaniaAPI.registerManaInfusionRecipe(new ItemStack(ModBlocks.storage, 1, 3), new ItemStack(Blocks.diamond_block), 90000));
 
 		manaPowderRecipes = new ArrayList();

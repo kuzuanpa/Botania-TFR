@@ -119,7 +119,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 	private static boolean isPlayingMusic = false;
 
-	public EntityDoppleganger(World par1World) {
+	public EntityDoppleganger(World par1World ) {
 		super(par1World);
 		setSize(0.6F, 1.8F);
 		getNavigator().setCanSwim(true);

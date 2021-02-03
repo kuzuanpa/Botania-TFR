@@ -107,7 +107,6 @@ public final class ModAchievements {
 		runePickup = new AchievementMod(LibAchievementNames.RUNE_PICKUP, 6, 2, ModBlocks.runeAltar, manaPoolPickup);
 
 		dirtRodCraft = new AchievementMod(LibAchievementNames.DIRT_ROD_CRAFT, 8, 3, ModItems.dirtRod, runePickup);
-		terraformRodCraft = new AchievementMod(LibAchievementNames.TERRAFORM_ROD_CRAFT, 10, 3, ModItems.terraformRod, dirtRodCraft);
 		pollidisiacPickup = new AchievementMod(LibAchievementNames.POLLIDISIAC_PICKUP, 8, 5, ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_POLLIDISIAC), runePickup);
 		brewPickup = new AchievementMod(LibAchievementNames.BREW_PICKUP, 6, 0, ModBlocks.brewery, runePickup);
 		terrasteelPickup = new AchievementMod(LibAchievementNames.TERRASTEEL_PICKUP, 6, 9, new ItemStack(ModItems.manaResource, 1, 4), runePickup).setSpecial();

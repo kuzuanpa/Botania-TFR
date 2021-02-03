@@ -109,10 +109,8 @@ import vazkii.botania.common.item.rod.ItemDiviningRod;
 import vazkii.botania.common.item.rod.ItemFireRod;
 import vazkii.botania.common.item.rod.ItemGravityRod;
 import vazkii.botania.common.item.rod.ItemMissileRod;
-import vazkii.botania.common.item.rod.ItemRainbowRod;
 import vazkii.botania.common.item.rod.ItemSkyDirtRod;
 import vazkii.botania.common.item.rod.ItemSmeltRod;
-import vazkii.botania.common.item.rod.ItemTerraformRod;
 import vazkii.botania.common.item.rod.ItemTornadoRod;
 import vazkii.botania.common.item.rod.ItemWaterRod;
 import vazkii.botania.common.lib.LibOreDict;
@@ -135,7 +133,6 @@ public final class ModItems {
 	public static Item fertilizer;
 	public static Item grassSeeds;
 	public static Item dirtRod;
-	public static Item terraformRod;
 	public static Item grassHorn;
 	public static Item manaMirror;
 	public static Item manasteelHelm;
@@ -187,7 +184,6 @@ public final class ModItems {
 	public static Item spawnerMover;
 	public static Item pixieRing;
 	public static Item superTravelBelt;
-	public static Item rainbowRod;
 	public static Item tornadoRod;
 	public static Item fireRod;
 	public static Item vineBall;
@@ -291,7 +287,6 @@ public final class ModItems {
 		fertilizer = new ItemFertilizer();
 		grassSeeds = new ItemGrassSeeds();
 		dirtRod = new ItemDirtRod();
-		terraformRod = new ItemTerraformRod();
 		grassHorn = new ItemGrassHorn();
 		manaMirror = new ItemManaMirror();
 		manasteelHelm = new ItemManasteelHelm();
@@ -343,7 +338,7 @@ public final class ModItems {
 		spawnerMover = new ItemSpawnerMover();
 		pixieRing = new ItemPixieRing();
 		superTravelBelt = new ItemSuperTravelBelt();
-		rainbowRod = new ItemRainbowRod();
+
 		tornadoRod = new ItemTornadoRod();
 		fireRod = new ItemFireRod();
 		vineBall = new ItemVineBall();

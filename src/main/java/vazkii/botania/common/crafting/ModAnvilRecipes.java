@@ -40,12 +40,12 @@ public class ModAnvilRecipes {
 	
 	private static void registerAnvilRecipes(AnvilManager anvilManager) {
 	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 0),(new ItemStack(ModItems.manaResource, 1, 0)), "pickaxe", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.MANA_STEELPickaxe)).addRecipeSkill(Global.SKILL_TOOLSMITH));
-	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 7),(new ItemStack(ModItems.manaResource, 1, 7)), "pickaxe", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.elementiumPickaxe)).addRecipeSkill(Global.SKILL_TOOLSMITH));
-	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 4),(new ItemStack(ModItems.manaResource, 1, 4)), "pickaxe", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.terrasteelPickaxe)).addRecipeSkill(Global.SKILL_TOOLSMITH));
+	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 7),(new ItemStack(ModItems.manaResource, 1, 7)), "pickaxe", AnvilReq.BLUESTEEL, new ItemStack(ModItems.elementiumPickaxe)).addRecipeSkill(Global.SKILL_TOOLSMITH));
+	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 4),(new ItemStack(ModItems.manaResource, 1, 4)), "pickaxe", AnvilReq.BLUESTEEL, new ItemStack(ModItems.terrasteelPickaxe)).addRecipeSkill(Global.SKILL_TOOLSMITH));
 	
 	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 0),(new ItemStack(ModItems.manaResource, 1, 0)), "sword", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.manasteelSword)).addRecipeSkill(Global.SKILL_TOOLSMITH));
-	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 7),(new ItemStack(ModItems.manaResource, 1, 7)), "sword", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.elementiumSword)).addRecipeSkill(Global.SKILL_TOOLSMITH));
-	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 4),(new ItemStack(ModItems.manaResource, 1, 4)), "sword", AnvilReq.WROUGHTIRON, new ItemStack(ModItems.terraSword)).addRecipeSkill(Global.SKILL_TOOLSMITH));
+	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 7),(new ItemStack(ModItems.manaResource, 1, 7)), "sword", AnvilReq.BLUESTEEL, new ItemStack(ModItems.elementiumSword)).addRecipeSkill(Global.SKILL_TOOLSMITH));
+	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.manaResource, 1, 4),(new ItemStack(ModItems.manaResource, 1, 4)), "sword", AnvilReq.BLUESTEEL, new ItemStack(ModItems.terraSword)).addRecipeSkill(Global.SKILL_TOOLSMITH));
 	
 	
 	anvilManager.addRecipe(new AnvilRecipe(new ItemStack(ModItems.terrasteelTK, 1), (new ItemStack(ModItems.manaResource, 1, 4)),"helmplate", AnvilReq.BLUESTEEL, new ItemStack(ModItems.terrasteelHelm, 1)).addRecipeSkill(Global.SKILL_ARMORSMITH).setCraftingXP(3));

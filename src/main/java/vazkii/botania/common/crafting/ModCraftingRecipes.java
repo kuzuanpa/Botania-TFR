@@ -97,7 +97,6 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeFerilizerDye;
 	public static IRecipe recipeLivingwoodTwig;
 	public static IRecipe recipeDirtRod;
-	public static IRecipe recipeTerraformRod;
 	public static IRecipe recipeRedstoneSpreader;
 	public static IRecipe recipeManaMirror;
 	public static IRecipe recipeGrassHorn;
@@ -143,7 +142,7 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeSpawnerMover;
 	public static IRecipe recipePixieRing;
 	public static IRecipe recipeSuperTravelBelt;
-	public static IRecipe recipeRainbowRod;
+
 	public static IRecipe recipeSpectralPlatform;
 	public static List<IRecipe> recipesDreamwoodSpreader;
 	public static IRecipe recipeTornadoRod;
@@ -667,18 +666,6 @@ public final class ModCraftingRecipes {
 				'E', LibOreDict.RUNE[2]);
 		recipeDirtRod = BotaniaAPI.getLatestAddedRecipe();
 
-		// Terra Firma Rod Recipe
-		addOreDictRecipe(new ItemStack(ModItems.terraformRod),
-				" WT", "ARS", "GM ",
-				'T', LibOreDict.TERRA_STEEL,
-				'R', new ItemStack(ModItems.dirtRod),
-				'G', new ItemStack(ModItems.grassSeeds),
-				'W', LibOreDict.RUNE[7],
-				'S', LibOreDict.RUNE[4],
-				'M', LibOreDict.RUNE[5],
-				'A', LibOreDict.RUNE[6]);
-		recipeTerraformRod = BotaniaAPI.getLatestAddedRecipe();
-
 		// Redstone Mana Spreader Recipe
 		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.spreader, 1, 1),
 				new ItemStack(ModBlocks.spreader), "dustRedstone"));
@@ -1020,12 +1007,7 @@ public final class ModCraftingRecipes {
 		recipeSuperTravelBelt = BotaniaAPI.getLatestAddedRecipe();
 
 		// Rod of Bifrost Recipe
-		addOreDictRecipe(new ItemStack(ModItems.rainbowRod),
-				" PD", " EP", "E  ",
-				'P', LibOreDict.PIXIE_DUST,
-				'E', LibOreDict.ELEMENTIUM,
-				'D', LibOreDict.DRAGONSTONE);
-		recipeRainbowRod = BotaniaAPI.getLatestAddedRecipe();
+
 
 		// Spectral Platform Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.platform, 2, 1),
@@ -1979,7 +1961,7 @@ public final class ModCraftingRecipes {
 		recipeManaweaveBoots = BotaniaAPI.getLatestAddedRecipe();
 
 		// Bifrost Blocks Recipe
-		addShapelessOreDictRecipe(new ItemStack(ModBlocks.bifrostPerm), new ItemStack(ModItems.rainbowRod), new ItemStack(ModBlocks.elfGlass));
+		addShapelessOreDictRecipe(new ItemStack(ModBlocks.bifrostPerm), LibOreDict.PIXIE_DUST, new ItemStack(ModBlocks.elfGlass));
 		recipeBifrost = BotaniaAPI.getLatestAddedRecipe();
 		addShapelessOreDictRecipe(new ItemStack(ModBlocks.shimmerrock), LibOreDict.LIVING_ROCK, new ItemStack(ModBlocks.bifrostPerm));
 		recipeShimmerrock = BotaniaAPI.getLatestAddedRecipe();
