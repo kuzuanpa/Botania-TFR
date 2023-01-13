@@ -2,23 +2,25 @@ buildscript {
     repositories {
         mavenCentral()
         maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+        maven {
+            name = "forge"
+            url = "https://bmclapi2.bangbang93.com/maven"
+        }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
     }
 }
 
 repositories {
     maven {
         name = "chickenbones"
-        url = "http://chickenbones.net/maven/"
+        url = "https://chickenbones.net/maven/"
     }
 }
 
@@ -57,31 +59,12 @@ configurations {
 //End of the SCP config
 
 dependencies {
-    compile files(
-        'Baubles-deobf.jar'
-    )
-    compile "codechicken:CodeChickenLib:1.7.10-1.1.1.109:dev"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
-    compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
 
     //and a bit more for SCP
     sshAntTask "org.apache.ant:ant-jsch:1.7.1", "jsch:jsch:0.1.29"
 }
 
 processResources {
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand 'version': project.version, 'mcversion': project.minecraft.version
-    }
-
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info', '**/psd/**'
-    }
 }
 
 /**
@@ -95,18 +78,7 @@ task deobfJar(type: Jar) {
 artifacts {
     archives deobfJar
 }
-/**
- * Increments the buildnumber in your config file, and saves it
- */
-task incrementBuildNumber(dependsOn: 'reobf') << {
-    config.build_number = (config.build_number.toString().toInteger()) + 1
-    configFile.withWriter {
-        config.toProperties().store(it, "")
-    }
 
-    file('web/versions.ini').append("\n${version}=${minecraft.version}")
-    file("${config.dir_repo}/version/${minecraft.version}.txt").write("${version}")
-}
 
 // I have no idea what I'm doing
 task wtfGradle2(type: Copy) {
@@ -148,29 +120,11 @@ task sort(type: Delete) {
 /**
  * This is the upload task from the build.xml
  */
-task upload() << {
-    scp('/files') {
-        fileset(file: jar.archivePath)
-    }
-	
-	scp('/files/deobf') {
-        fileset(file: deobfJar.archivePath)
-    }
-
-    scp('/') {
-        fileset(file: 'web/changelog.txt')
-        fileset(file: 'web/versions.ini')
-    }
-}
 
 /**
  * This is deply_web task
  */
-task deployWeb << {
-    scp('/') {
-        fileset(dir: 'web') //everything from the web directory
-    }
-}
+
 
 def scp(String dir, Closure antFileset = {}) {
     ant {
