@@ -2369,16 +2369,16 @@ botania.page.tigerseye0=我们都知道&4爬行者&0害怕&4猫&0.<br>&1虎之�
 botania.page.tigerseye1=&o是时候向敌人反击了&r.
 
 # -- ORECHID
-botania.entry.orechid=凝矿兰
-botania.tagline.orechid=石中取矿
-botania.page.orechid0=尽管挖矿很好,我们应想些可 再生的方法.&1凝矿兰&0会用(大量 的)&4魔力&0来在附近的&1石头&0方块 中生成&4矿物&0.<br>它生成的矿物是随机的,但显 然普通的比稀有的偏多.
-botania.page.orechid1=&o这可不是龙的便便(SAO)&r.
+botania.entry.orechid=;$矿5@
+botania.tagline.orechid=石2/)&:?&'
+botania.page.orechid0=这页辞典遭受了神秘的破坏，已经无法阅读
+botania.page.orechid1=&o
 
 # -- ORECHID IGNEM
-botania.entry.orechidIgnem=炎矿兰
-botania.tagline.orechidIgnem=地狱岩里的地狱矿
-botania.page.orechidIgnem0=&1凝矿兰&0是朵不错的花.用&4魔力&0 来产生原矿,对谁而言都是极 好的.然而它却不能产生来自 &4下界&0的矿物.通过改变花瓣的 配方,你解决了这个问题.现 在它就能利用&1地狱岩&0来产生 &4下界&0矿物.花必须在&4下界&0才能 工作
-botania.page.orechidIgnem1=&o变热吧&r.
+botania.entry.orechidIgnem=炎(;$&
+botania.tagline.orechidIgnem=地狱9)&@7
+botania.page.orechidIgnem0=这页辞典遭受了神秘的破坏，已经无法阅读
+botania.page.orechidIgnem1=&o
 
 # -- FALLEN KANADE
 botania.entry.fallenKanade=天降之奏
@@ -2453,7 +2453,7 @@ botania.page.loonium1=&o箱子箱子我需要箱子&r!
 botania.entry.daffomill=扇水仙
 botania.tagline.daffomill=用风移动物品
 botania.page.daffomill0=&1扇水仙&0就像个风扇.它会消耗 少量&4魔力&0推动它前方的任何 物品.<br>使用&1森林法杖&0shift右击可以 调整朝向.它实时的朝向可以 通过风粒子的效果来判断.
-botania.page.daffomill1=&o风电机?不,我就是个风扇&r.
+botania.page.daffomill1=&o风力发电机?不,我就是个风扇&r.
 
 # -- VINCULOTUS
 botania.entry.vinculotus=诱引莲
@@ -2523,8 +2523,6 @@ botania.page.daybloom1=这些花会相互争夺光照,因此 在邻近的四个�
 botania.page.daybloom1a=若有其他&1太阳花&0相邻则会减 少&4魔力&0的产量.<br>这种花的生命力不太顽强,因 此过段时间后就会枯萎死亡.<br>作为初期的花它们的效率有 限,或许升级为&1火红莲&0或其他 的花是个不错的选择.
 botania.page.daybloom3=产出缩减
 botania.page.daybloom2=&o崭新的一天开始了&r.
-botania.page.daybloom4=&o你们中有多少人曾为爱所伤? 又有多少次你发誓不会再爱? 有多少孤独寂寞的不眠之夜? 有过多少谎言?多少斗争?你 又为何每次都要重新卷入其 中?"爱即是痛,"我听见了你 的话语.爱有着残酷而又痛苦 的方法来报复你所遗弃的信 念. (...)
-botania.page.daybloom5=&o当你最需要的反而让你变得 存在薄弱,那又是何种感觉? 你再也不想迷失在悲伤之中. 可能会有一天,下着淅淅沥沥 的雨,你打开了一本老书.看 见了一张照片,那是当你们还 在一起的时候她所留下的笑 容.你也可能会在路上漫步, 随着思绪而行.但她的笑脸一 直在脑海中挥之不去...
 
 # -- NIGHTSHADE
 botania.entry.nightshade=夜颠茄
@@ -2569,10 +2567,10 @@ botania.page.munchdew1=这朵花每啃食一棵树都会输 出大量的魔力.<
 botania.page.munchdew2=&o你付饭钱吧,柴崎&r.
 
 # -- ENTROPINNYUM
-botania.entry.entropinnyum=热爆花
-botania.tagline.entropinnyum=爆炸才是Mana
-botania.page.entropinnyum0=事实上为了制造一波&4魔力&0,就 需要附近有一波爆炸.<br>靠近&1热爆花&0点燃一个&1TNT&0,花 就会吸收爆炸产生的热与冲 击并产生大量的&4魔力&0,消除一 切爆炸伤害.最后,为了吸收 爆炸,花本身需要无&4魔力&0否则 这个过程就会失败.
-botania.page.entropinnyum1=&o耍帅的家伙是不会看爆炸的&r.
+botania.entry.entropinnyum=热5@)!
+botania.tagline.entropinnyum=爆:4)&,是@&na
+botania.page.entropinnyum0=这页辞典遭受了神秘的破坏，已经无法阅读
+botania.page.entropinnyum1=&o
 
 # -- KEKIMURUS
 botania.entry.kekimurus=贪食花
@@ -2587,9 +2585,6 @@ botania.page.gourmaryllis0=&1彼方兰&0是朵饥饿的花.它会吃 掉它附�
 botania.page.gourmaryllis1=消化美味的时间取决于它的 营养值,通俗来说,就是食物 所含的饱食度.<br>因此,一个&1牛排&0需要4秒来消 化,一个&1胡萝卜&0则需要2秒,一 个&1面包&0就需要2.5秒,以此类 推. 
 botania.page.gourmaryllis2=&4魔力&0的产量也取决于这个值, 食物越有营养它的效率就越 高.举例来说,单个&1牛排&0能比 两根&1胡萝卜&0产生更多的&1魔力&0, 无论是总量还是每秒的.
 botania.page.gourmaryllis3=&o为我们的新房客准备的火锅&r.
-botania.page.gourmaryllis4=&o哇哦.如果人在它们死后吃了 它们,就会想起一些恐怖和负 面的事.但是你知道这是因为 你的残忍导致的结果,想一想, 人们吃的鱼儿像你一样活着.<br>Job活着的时候说:"为什么你 总是这么无情地跟着我,活着 吃我,病了也吃我".你希望看 到这样的Job么?(...)
-botania.page.gourmaryllis5=&o就像一个犯了罪或被指控为 罪犯的人看着那些要吃他的 人一样.警察吃他,狱卒吃他,记 录员吃他,原告吃他,调查者吃 他,律师吃他,证人吃他,法官吃 他,然后他甚至还没被宣判就 已经被吃了.更糟糕的是人并 不是鸡.(...)
-botania.page.gourmaryllis6=&o更令人伤心的是一个要被绞 死的人,执行死刑之后只 有乌鸦来吃他,而被审判的人, 甚至不执行处决就已经被吃 了<br>真正的恶魔是吃别人的人,无 论是那些吃得最多的,还是 吃的最少的.因为你们便是地 上的盐,盐若失去了滋味,可 用什么使它再变咸呢.(新约)
 
 # -- NARSLIMMUS
 botania.entry.narslimmus=粘球草
@@ -3926,3 +3921,6 @@ item.UnfinishedterrasteelHelm.name=未完成泰拉钢头盔
 item.UnfinishedterrasteelChest.name=未完成泰拉钢胸甲
 item.UnfinishedterrasteelLegs.name=未完成泰拉钢护腿
 item.UnfinishedterrasteelBooots.name=未完成泰拉钢鞋子
+item.manaCookie.name=魔力曲奇
+item.placeholder.name=合成占位符
+item.redString.name=红线

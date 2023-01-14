@@ -41,7 +41,7 @@ public class SubTileNarslimmus extends SubTileGenerating {
 				if(slime.getEntityData().getBoolean(TAG_WORLD_SPAWNED) && !slime.isDead) {
 					int size = slime.getSlimeSize();
 					int mul = (int) Math.pow(2, size);
-					int mana = 820 * mul;
+					int mana = 420 * mul;
 					if(!slime.worldObj.isRemote) {
 						slime.setDead();
 						slime.worldObj.playSoundAtEntity(slime, "mob.slime." + (size > 1 ? "big" : "small"), 1F, 0.02F);

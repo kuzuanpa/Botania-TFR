@@ -12,12 +12,14 @@ package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import org.apache.logging.log4j.Level;
 import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
@@ -30,6 +32,8 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 
 	int cooldown = 0;
 	int storedMana = 0;
+	int repeatNum = 0;
+	ItemFood lastFood = null;
 
 	@Override
 	public void onUpdate() {
@@ -53,8 +57,18 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 				if(cooldown == 0) {
 					if(!remote) {
 						int val = ((ItemFood) stack.getItem()).func_150905_g(stack);
-						storedMana = val * val * 64;
-						cooldown = val * 10;
+						if (lastFood == (ItemFood) stack.getItem()){
+							repeatNum++;
+							storedMana = val * val * val * 10 / repeatNum ;
+							cooldown = val * 20 * (int)Math.sqrt(repeatNum);
+							FMLLog.log(Level.FATAL,"debug: Repeating"+lastFood+"/"+cooldown+"/"+storedMana);
+						}else {
+							lastFood = (ItemFood) stack.getItem();
+							repeatNum = 0;
+							storedMana = val * val * val * 10;
+							cooldown = val * 20;
+							FMLLog.log(Level.FATAL,"debug: Not Repeating,last:"+lastFood+"/"+cooldown+"/"+storedMana);
+						}
 						supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.eat", 0.2F, 0.5F + (float) Math.random() * 0.5F);
 						sync();
 					} else 

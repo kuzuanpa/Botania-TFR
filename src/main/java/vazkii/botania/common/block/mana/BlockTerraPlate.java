@@ -10,6 +10,7 @@
  */
 package vazkii.botania.common.block.mana;
 
+import com.bioxx.tfc.api.TFCItems;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
@@ -48,7 +49,7 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean onBlockActivated(World worldObj, int x, int y, int z, EntityPlayer player, int s, float xs, float ys, float zs) {
 		ItemStack stack = player.getCurrentEquippedItem();
-		if(stack != null && stack.getItem() == ModItems.manaResource && stack.getItemDamage() < 4) {
+		if(stack != null && stack.getItem() == ModItems.manaResource || stack.getItem() == TFCItems.blackSteelIngot) {
 			if(player == null || !player.capabilities.isCreativeMode) {
 				stack.stackSize--;
 				if(stack.stackSize == 0 && player != null)

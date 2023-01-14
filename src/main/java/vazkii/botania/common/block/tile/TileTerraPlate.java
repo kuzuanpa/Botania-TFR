@@ -35,7 +35,7 @@ import vazkii.botania.common.item.ModItems;
 
 public class TileTerraPlate extends TileMod implements ISparkAttachable {
 
-	public static final int MAX_MANA = TilePool.MAX_MANA / 2;
+	public static final int MAX_MANA = TilePool.MAX_MANA * 2;
 	private static final int[][] LAPIS_BLOCKS = {
 		{ 1, 0, }, { -1, 0 }, { 0, 1 }, { 0, -1 }
 	};

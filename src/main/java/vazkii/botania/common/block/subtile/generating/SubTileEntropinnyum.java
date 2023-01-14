@@ -8,6 +8,7 @@
  * 
  * File Created @ [Jun 7, 2014, 10:59:44 PM (GMT)]
  */
+//This flower is banned. uncomment vazkii.botania.common.block.ModBlocks.java:104&472 to enable it
 package vazkii.botania.common.block.subtile.generating;
 
 import java.util.List;

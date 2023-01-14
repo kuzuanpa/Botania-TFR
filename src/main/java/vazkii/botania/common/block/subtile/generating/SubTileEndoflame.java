@@ -52,7 +52,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 							int burnTime = stack == null || stack.getItem() == Item.getItemFromBlock(ModBlocks.spreader) ? 0 : TileEntityFurnace.getItemBurnTime(stack);
 							if(burnTime > 0 && stack.stackSize > 0) {
-								this.burnTime = Math.min(FUEL_CAP, burnTime) / 2;
+								this.burnTime = Math.min(FUEL_CAP, burnTime) / 4;
 
 								if(!supertile.getWorldObj().isRemote) {
 									stack.stackSize--;

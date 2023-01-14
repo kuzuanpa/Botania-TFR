@@ -54,7 +54,7 @@ public class SubTileThermalily extends SubTileHydroangeas {
 
 	@Override
 	public int getBurnTime() {
-		return 900;
+		return 1000;
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class SubTileThermalily extends SubTileHydroangeas {
 
 	@Override
 	public int getCooldown() {
-		return 6000;
+		return 5000;
 	}
 
 }
