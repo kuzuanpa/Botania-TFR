@@ -77,6 +77,7 @@ import vazkii.botania.common.entity.ModEntities;
 import vazkii.botania.common.integration.buildcraft.StatementAPIPlugin;
 import vazkii.botania.common.integration.etfuturum.ModBanners;
 import vazkii.botania.common.item.ModItems;
+import vazkii.botania.common.item.ModItemsOreDict;
 import vazkii.botania.common.lexicon.LexiconData;
 import vazkii.botania.common.lib.LibMisc;
 import vazkii.botania.common.network.GuiHandler;
@@ -106,6 +107,7 @@ public class CommonProxy {
 		ModEntities.init();
 		ModPotions.init();
 		ModBrews.init();
+		ModItemsOreDict.init();
 
 		ModCraftingRecipes.init();
 		ModPetalRecipes.init();

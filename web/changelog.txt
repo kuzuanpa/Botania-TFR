@@ -1,9 +1,13 @@
 tfru 3701
 *balance mana gen/cost: in TFRU, the easier to make it automatically(include using Forestry Farm, GT machines,etc.), the less mana it will generate
 *Remove odd text in zh_CN.lang: can't be displayed and not exist in any other lang
+*Adapted TFC health of odinRing's health boost
+*Fix Registering OreDict before Items registered: reduce trash waring log when init game
 *zh:
 *平衡魔力产出/消耗: 在TFRU中，越容易实现自动产魔的花，魔力产出量越低(包括使用林业农场，GT机械等)
 *删除zh_CN.lang中奇怪的文字: 无法显示且其他语言中不存在
+*奥顶之戒的生命加成适配群峦血量
+*修复注册矿物辞典在注册物品本身之前的问题: 减少启动游戏时无用的Waring报错
 
 r1.8 249
 *<i>The "LEAVE ME THE #%!& ALONE" update! Powered by the community's Pull Requests and TheWhiteWolves' help. Also the last "official" update. Unless it breaks awfully. In that case there'll be another to fix this one. Hopefully not.</i>

@@ -3667,7 +3667,7 @@ botania.page.lokiRing3=当然这么强大的力量肯定不是免费的. 每放�
 # -- RING OF ODIN
 botania.entry.odinRing=奥丁之戒
 botania.tagline.odinRing=神佑buff
-botania.page.odinRing0=&4亚瑟王&0所持有的三神戒之一, 赠与穿戴者主神&4奥丁&0的生命 力与活力.穿戴&1奥丁之戒&0不仅 会有额外10颗心的生命,还 能保护穿戴者免受各种环境 伤害如溺水,窒息,火焰以及 饥饿. 这枚戒指能够与另外 两枚&4亚瑟王&0的戒指结合形成 一个最强的戒指.
+botania.page.odinRing0=&4亚瑟王&0所持有的三神戒之一, 赠与穿戴者主神&4奥丁&0的生命 力与活力.穿戴&1奥丁之戒&0不仅 会有额外1000点的生命,还 能保护穿戴者免受各种环境 伤害如溺水,窒息,火焰以及 饥饿. 这枚戒指能够与另外 两枚&4亚瑟王&0的戒指结合形成 一个最强的戒指.
 
 # -- ELVEN LORE - THE SHATTERING
 botania.entry.elvenLore=精灵传说-毁灭
