@@ -153,16 +153,12 @@ public class EntitySpark extends Entity implements ISparkEntity {
 				break;
 			}
 			case 2 : { // Dominant
-				List<ISparkEntity> validSparks = SparkHelper.getSparksAround(worldObj, posX, posY, posZ, getNetwork())
+				SparkHelper.getSparksAround(worldObj, posX, posY , posZ, getNetwork())
 						.filter(s -> {
 							int otherUpgrade = s.getUpgrade();
 							return s != this && otherUpgrade == 0 && s.getAttachedTile() instanceof IManaPool;
 						})
-						.collect(Collectors.toList());
-
-				if(validSparks.size() > 0)
-					validSparks.get(worldObj.rand.nextInt(validSparks.size())).registerTransfer(this);
-
+				.forEach(transfers::add);
 				break;
 			}
 			case 3 : { // Recessive
@@ -253,7 +249,7 @@ public Entity lastSpark;
 			float b = Math.min(1F, color.getBlue() / 255F + 0.4F);
 
 			Botania.proxy.setSparkleFXNoClip(true);
-			Botania.proxy.sparkleFX(e1.worldObj, currentPos.x, currentPos.y, currentPos.z, r, g, b, 1F, 12);
+			Botania.proxy.sparkleFX(e1.worldObj, currentPos.x, currentPos.y, currentPos.z, r, g, b, 1F, 80);
 			Botania.proxy.setSparkleFXNoClip(false);
 			currentPos.add(movement);
 		}
