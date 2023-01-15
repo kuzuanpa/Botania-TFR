@@ -20,14 +20,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.WeakHashMap;
+import java.util.stream.Collectors;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import org.apache.logging.log4j.Level;
 import vazkii.botania.api.mana.IManaItem;
 import vazkii.botania.api.mana.IManaPool;
 import vazkii.botania.api.mana.spark.ISparkAttachable;
@@ -43,7 +47,9 @@ public class EntitySpark extends Entity implements ISparkEntity {
 	private static final int TRANSFER_RATE = 1000;
 	private static final String TAG_UPGRADE = "upgrade";
 	private static final String TAG_INVIS = "invis";
+	private static final String TAG_NETWORK = "network";
 	public static final int INVISIBILITY_DATA_WATCHER_KEY = 27;
+	public static final int COLOR_DATA_WATCHER_KEY = 26;
 
 	Set<ISparkEntity> transfers = Collections.newSetFromMap(new WeakHashMap());
 
@@ -62,8 +68,17 @@ public class EntitySpark extends Entity implements ISparkEntity {
 		dataWatcher.addObject(28, 0);
 		dataWatcher.setObjectWatched(INVISIBILITY_DATA_WATCHER_KEY);
 		dataWatcher.setObjectWatched(28);
+		dataWatcher.addObject(COLOR_DATA_WATCHER_KEY, 15);
+		dataWatcher.setObjectWatched(COLOR_DATA_WATCHER_KEY);
 	}
 
+	public int getNetwork() {
+		return dataWatcher.getWatchableObjectInt(COLOR_DATA_WATCHER_KEY);
+	}
+
+	public void setNetwork(int color) {
+		dataWatcher.updateObject(COLOR_DATA_WATCHER_KEY, color);
+	}
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -77,9 +92,6 @@ public class EntitySpark extends Entity implements ISparkEntity {
 
 		boolean first = worldObj.isRemote && !firstTick;
 		int upgrade = getUpgrade();
-		List<ISparkEntity> allSparks = null;
-		if(first || upgrade == 2 || upgrade == 3)
-			allSparks = SparkHelper.getSparksAround(worldObj, posX, posY, posZ);
 
 		if(first)
 			first = true;
@@ -141,29 +153,28 @@ public class EntitySpark extends Entity implements ISparkEntity {
 				break;
 			}
 			case 2 : { // Dominant
-				List<ISparkEntity> validSparks = new ArrayList();
-				for(ISparkEntity spark : allSparks) {
-					if(spark == this)
-						continue;
+				List<ISparkEntity> validSparks = SparkHelper.getSparksAround(worldObj, posX, posY, posZ, getNetwork())
+						.filter(s -> {
+							int otherUpgrade = s.getUpgrade();
+							return s != this && otherUpgrade == 0 && s.getAttachedTile() instanceof IManaPool;
+						})
+						.collect(Collectors.toList());
 
-					int upgrade_ = spark.getUpgrade();
-					if(upgrade_ == 0 && spark.getAttachedTile() instanceof IManaPool)
-						validSparks.add(spark);
-				}
 				if(validSparks.size() > 0)
 					validSparks.get(worldObj.rand.nextInt(validSparks.size())).registerTransfer(this);
 
 				break;
 			}
 			case 3 : { // Recessive
-				for(ISparkEntity spark : allSparks) {
-					if(spark == this)
-						continue;
-
-					int upgrade_ = spark.getUpgrade();
-					if(upgrade_ != 2 && upgrade_ != 3 && upgrade_ != 4)
-						transfers.add(spark);
-				}
+				SparkHelper.getSparksAround(worldObj, posX, posY , posZ, getNetwork())
+						.filter(s -> {
+							int otherUpgrade = s.getUpgrade();
+							return s != this
+									&& otherUpgrade != 2
+									&& otherUpgrade != 3
+									&& otherUpgrade != 4;
+						})
+						.forEach(transfers::add);
 				break;
 			}
 			}
@@ -214,7 +225,13 @@ public class EntitySpark extends Entity implements ISparkEntity {
 
 		Botania.proxy.wispFX(worldObj, thisVec.x, thisVec.y, thisVec.z, r, g, b, size, (float) motion.x, (float) motion.y, (float) motion.z);
 	}
-
+public Entity lastSpark;
+	public void connectSparks(Entity e) {
+		if (lastSpark != null) {
+			particleBeam(lastSpark, e);
+		}
+		lastSpark = e;
+	}
 	public static void particleBeam(Entity e1, Entity e2) {
 		if(e1 == null || e2 == null)
 			return;
@@ -266,9 +283,8 @@ public class EntitySpark extends Entity implements ISparkEntity {
 						player.swingItem();
 					return true;
 				} else {
-					List<ISparkEntity> allSparks = SparkHelper.getSparksAround(worldObj, posX, posY, posZ);
-					for(ISparkEntity spark : allSparks)
-						particleBeam(this, (Entity) spark);
+					SparkHelper.getSparksAround(worldObj, posX, posY , posZ, getNetwork())
+							.forEach(s -> connectSparks((Entity) s));
 					return true;
 				}
 			} else if(stack.getItem() == ModItems.sparkUpgrade && upgrade == 0) {
@@ -278,6 +294,16 @@ public class EntitySpark extends Entity implements ISparkEntity {
 				if(player.worldObj.isRemote)
 					player.swingItem();
 				return true;
+			} else if (stack.getItem() instanceof ItemDye) {
+				int color = stack.getItemDamage();
+				FMLLog.log(Level.FATAL,"a"+color);
+				if (color != getNetwork()) {
+					setNetwork(color);
+					FMLLog.log(Level.FATAL,"c"+getNetwork());
+
+					stack.stackSize--;
+					return true;
+				}
 			}
 		}
 
@@ -298,12 +324,14 @@ public class EntitySpark extends Entity implements ISparkEntity {
 	protected void readEntityFromNBT(NBTTagCompound cmp) {
 		setUpgrade(cmp.getInteger(TAG_UPGRADE));
 		dataWatcher.updateObject(INVISIBILITY_DATA_WATCHER_KEY, cmp.getInteger(TAG_INVIS));
+		setNetwork(cmp.getInteger(TAG_NETWORK));
 	}
 
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound cmp) {
 		cmp.setInteger(TAG_UPGRADE, getUpgrade());
 		cmp.setInteger(TAG_INVIS, dataWatcher.getWatchableObjectInt(INVISIBILITY_DATA_WATCHER_KEY));
+		cmp.setInteger(TAG_NETWORK, getNetwork());
 	}
 
 	@Override
@@ -340,7 +368,7 @@ public class EntitySpark extends Entity implements ISparkEntity {
 			int supgr = spark.getUpgrade();
 			ISparkAttachable atile = spark.getAttachedTile();
 
-			if(!(spark != this && !spark.areIncomingTransfersDone() && atile != null && !atile.isFull() && (upgr == 0 && supgr == 2 || upgr == 3 && (supgr == 0 || supgr == 1) || !(atile instanceof IManaPool))))
+			if(!(spark != this && !spark.areIncomingTransfersDone() && getNetwork() != spark.getNetwork() && atile != null && !atile.isFull() && (upgr == 0 && supgr == 2 || upgr == 3 && (supgr == 0 || supgr == 1) || !(atile instanceof IManaPool))))
 				removals.add(e);
 		}
 

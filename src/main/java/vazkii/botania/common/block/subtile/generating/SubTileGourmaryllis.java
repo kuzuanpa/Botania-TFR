@@ -61,13 +61,13 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 							repeatNum++;
 							storedMana = val * val * val * 10 / repeatNum ;
 							cooldown = val * 20 * (int)Math.sqrt(repeatNum);
-							FMLLog.log(Level.FATAL,"debug: Repeating"+lastFood+"/"+cooldown+"/"+storedMana);
+							//FMLLog.log(Level.FATAL,"debug: Repeating"+lastFood+"/"+cooldown+"/"+storedMana);
 						}else {
 							lastFood = (ItemFood) stack.getItem();
 							repeatNum = 0;
 							storedMana = val * val * val * 10;
 							cooldown = val * 20;
-							FMLLog.log(Level.FATAL,"debug: Not Repeating,last:"+lastFood+"/"+cooldown+"/"+storedMana);
+							//FMLLog.log(Level.FATAL,"debug: Not Repeating,last:"+lastFood+"/"+cooldown+"/"+storedMana);
 						}
 						supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.eat", 0.2F, 0.5F + (float) Math.random() * 0.5F);
 						sync();

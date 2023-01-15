@@ -11,6 +11,7 @@
 package vazkii.botania.api.mana.spark;
 
 import java.util.Collection;
+import  net.minecraft.item.ItemDye;
 
 /**
  * An Entity that implements this is considered a Spark.
@@ -60,5 +61,9 @@ public interface ISparkEntity {
 	 * See {@link ISparkAttachable#areIncomingTranfersDone()}
 	 */
 	public boolean areIncomingTransfersDone();
-
+	/**
+	 * Gets the network that this spark is on, or the color it's displaying. Sparks may only connect to others
+	 * of the same network.
+	 */
+	public int getNetwork();
 }

@@ -3,11 +3,13 @@ tfru 3701
 *Remove odd text in zh_CN.lang: can't be displayed and not exist in any other lang
 *Adapted TFC health of odinRing's health boost, Increase health regen spped of Terrasteel armorset (slightly slower than TFC HotSpring Water)(GT HotSpring Water is super fast...)
 *Fix Registering OreDict before Items registered: reduce trash waring log when init game
+*Add future version features: Spark dyeing
 *zh:
 *平衡魔力产出/消耗: 在TFRU中，越容易实现自动产魔的花，魔力产出量越低(包括使用林业农场，GT机械等)
 *删除zh_CN.lang中奇怪的文字: 无法显示且其他语言中不存在
 *奥丁之戒的生命加成适配群峦血量，远古意志套装加成的生命回复速度增加(略慢于群峦温泉水)(GT温泉水快的离谱...)
 *修复注册矿物辞典在注册物品本身之前的问题: 减少启动游戏时无用的Waring报错
+*移植未来版本特性: 火花染色
 
 r1.8 249
 *<i>The "LEAVE ME THE #%!& ALONE" update! Powered by the community's Pull Requests and TheWhiteWolves' help. Also the last "official" update. Unless it breaks awfully. In that case there'll be another to fix this one. Hopefully not.</i>

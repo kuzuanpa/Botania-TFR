@@ -11,6 +11,7 @@
 package vazkii.botania.api.mana.spark;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -28,5 +29,7 @@ public final class SparkHelper {
 		List<T> entities = world.getEntitiesWithinAABB(clazz, AxisAlignedBB.getBoundingBox(x - r, y - r, z - r, x + r, y + r, z + r));
 		return entities;
 	}
-
+	public static Stream<ISparkEntity> getSparksAround(World world, double x, double y, double z, int color) {
+		return getSparksAround(world, x, y, z).stream().filter(s -> s.getNetwork() == color);
+	}
 }

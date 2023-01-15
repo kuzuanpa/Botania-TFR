@@ -12,6 +12,7 @@ package vazkii.botania.client.render.entity;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderEntity;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -19,6 +20,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
+import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -26,7 +28,9 @@ import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.common.entity.EntitySpark;
 import vazkii.botania.common.item.ItemSpark;
 
-public class RenderSparkBase<T extends Entity> extends RenderEntity {
+import static net.minecraft.item.ItemDye.field_150922_c;
+
+public class RenderSparkBase<T extends EntitySpark> extends RenderEntity {
 
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
@@ -44,7 +48,12 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		time += new Random(par1Entity.getEntityId()).nextInt();
 		float a = 0.1F + (1 - par1Entity.getDataWatcher().getWatchableObjectInt(EntitySpark.INVISIBILITY_DATA_WATCHER_KEY)) * 0.8F;
 
-		GL11.glColor4f(1F, 1F, 1F, (0.7F + 0.3F * (float) (Math.sin(time / 5.0) + 0.5) * 2) * a);
+		int hex = field_150922_c[tEntity.getNetwork()];
+		int red = (hex & 0xFF0000) >> 16;
+		int green = (hex & 0xFF00) >> 8;
+		int blue = hex & 0xFF;
+//make color a bit lighter
+		GL11.glColor4f(red/240F, green/240F, blue/240F, (0.7F + 0.3F * (float) (Math.sin(time / 5.0) + 0.5) * 2) * a);
 
 		float scale = 0.75F + 0.1F * (float) Math.sin(time / 10);
 		GL11.glScalef(scale, scale, scale);
@@ -65,7 +74,7 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 			func_77026_a(tessellator, spinningIcon);
 		}
 		GL11.glPopMatrix();
-		GL11.glColor4f(1F, 1F, 1F, 1F);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, a);
 		renderCallback(tEntity, par9);
 
 		GL11.glDisable(GL11.GL_BLEND);
@@ -77,12 +86,11 @@ public class RenderSparkBase<T extends Entity> extends RenderEntity {
 		return ItemSpark.worldIcon;
 	}
 
-	public void colorSpinningIcon(T entity, float a) {
-		// NO-OP
+	private void colorSpinningIcon(T entity, float a) {
 	}
 
 	public IIcon getSpinningIcon(T entity) {
-		return null;
+		return ItemSpark.worldIcon;
 	}
 
 	public void renderCallback(T entity, float pticks) {
