@@ -153,12 +153,14 @@ public class EntitySpark extends Entity implements ISparkEntity {
 				break;
 			}
 			case 2 : { // Dominant
-				SparkHelper.getSparksAround(worldObj, posX, posY , posZ, getNetwork())
+				 List<ISparkEntity> validSparks = SparkHelper.getSparksAround(worldObj, posX, posY , posZ, getNetwork())
 						.filter(s -> {
 							int otherUpgrade = s.getUpgrade();
 							return s != this && otherUpgrade == 0 && s.getAttachedTile() instanceof IManaPool;
 						})
-				.forEach(transfers::add);
+						.collect(Collectors.toList());
+				if(validSparks.size() > 0)
+					validSparks.get(worldObj.rand.nextInt(validSparks.size())).registerTransfer(this);
 				break;
 			}
 			case 3 : { // Recessive
@@ -359,15 +361,17 @@ public Entity lastSpark;
 		Collection<ISparkEntity> removals = new ArrayList();
 
 		for(ISparkEntity e : transfers) {
-			ISparkEntity spark = e;
-			int upgr = getUpgrade();
-			int supgr = spark.getUpgrade();
-			ISparkAttachable atile = spark.getAttachedTile();
-
-			if(!(spark != this && !spark.areIncomingTransfersDone() && getNetwork() != spark.getNetwork() && atile != null && !atile.isFull() && (upgr == 0 && supgr == 2 || upgr == 3 && (supgr == 0 || supgr == 1) || !(atile instanceof IManaPool))))
-				removals.add(e);
+			int upgradeThis = getUpgrade();
+			int upgrade = e.getUpgrade();
+			ISparkAttachable atile = e.getAttachedTile();
+			if (e == this
+					|| e.areIncomingTransfersDone()
+					|| getNetwork() != e.getNetwork()
+					|| atile == null
+					|| atile.isFull()
+					|| !(upgradeThis == 0 && upgrade == 2 || upgradeThis == 3 && (upgrade == 0 || upgrade == 1)
+					|| !(atile instanceof IManaPool))) removals.add(e);
 		}
-
 		if(!removals.isEmpty())
 			transfers.removeAll(removals);
 
@@ -380,8 +384,7 @@ public Entity lastSpark;
 
 	@Override
 	public void registerTransfer(ISparkEntity entity) {
-		if(hasTransfer(entity))
-			return;
+		if(hasTransfer(entity)) return;
 		transfers.add(entity);
 	}
 
