@@ -48,7 +48,7 @@ public class RenderSparkBase<T extends EntitySpark> extends RenderEntity {
 		time += new Random(par1Entity.getEntityId()).nextInt();
 		float a = 0.1F + (1 - par1Entity.getDataWatcher().getWatchableObjectInt(EntitySpark.INVISIBILITY_DATA_WATCHER_KEY)) * 0.8F;
 
-		int hex = field_150922_c[tEntity.getNetwork()];
+		int hex = field_150922_c[-tEntity.getNetwork()+15];
 		int red = (hex & 0xFF0000) >> 16;
 		int green = (hex & 0xFF00) >> 8;
 		int blue = hex & 0xFF;

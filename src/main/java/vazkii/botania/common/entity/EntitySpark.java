@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -41,6 +40,7 @@ import vazkii.botania.common.Botania;
 import vazkii.botania.common.core.helper.Vector3;
 import vazkii.botania.common.item.ModItems;
 import baubles.common.lib.PlayerHandler;
+import vazkii.botania.common.item.material.ItemDye;
 
 public class EntitySpark extends Entity implements ISparkEntity {
 
@@ -68,7 +68,7 @@ public class EntitySpark extends Entity implements ISparkEntity {
 		dataWatcher.addObject(28, 0);
 		dataWatcher.setObjectWatched(INVISIBILITY_DATA_WATCHER_KEY);
 		dataWatcher.setObjectWatched(28);
-		dataWatcher.addObject(COLOR_DATA_WATCHER_KEY, 15);
+		dataWatcher.addObject(COLOR_DATA_WATCHER_KEY, 0);
 		dataWatcher.setObjectWatched(COLOR_DATA_WATCHER_KEY);
 	}
 
@@ -294,11 +294,8 @@ public Entity lastSpark;
 				return true;
 			} else if (stack.getItem() instanceof ItemDye) {
 				int color = stack.getItemDamage();
-				FMLLog.log(Level.FATAL,"a"+color);
 				if (color != getNetwork()) {
 					setNetwork(color);
-					FMLLog.log(Level.FATAL,"c"+getNetwork());
-
 					stack.stackSize--;
 					return true;
 				}

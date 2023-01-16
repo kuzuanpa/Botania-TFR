@@ -648,7 +648,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			}
 
 			if(!worldObj.isRemote) {
-				setHealth(getHealth() + (getMaxHealth() - 20F) / SPAWN_TICKS);
+				setHealth(getHealth() + (getMaxHealth() - 1F) / SPAWN_TICKS);
 				setInvulTime(invul - 1);
 			}
 			motionY = 0;
@@ -684,7 +684,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 		
 									break;
 								}
-								case 3 : {
+								case 2 : {
 									if(!players.isEmpty())
 										for(int j = 0; j < 1 + worldObj.rand.nextInt(hard ? 8 : 5); j++) {
 											EntityPixie pixie = new EntityPixie(worldObj);
