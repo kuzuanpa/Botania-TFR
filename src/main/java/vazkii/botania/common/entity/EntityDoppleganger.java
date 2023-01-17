@@ -17,16 +17,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import com.bioxx.tfc.Entities.Mobs.EntityBear;
+import com.bioxx.tfc.Entities.Mobs.EntitySkeletonTFC;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityItem;
@@ -39,6 +37,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.stats.StatBasic;
 import net.minecraft.tileentity.TileEntityBeacon;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentTranslation;
@@ -82,12 +81,13 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	public static final int SPAWN_TICKS = 160;
 	private static final float RANGE = 12F;
 	private static final float MAX_HP = 12000F;
+	private static final float MAX_HP_HARD = 20000F;
 
 	public static final int MOB_SPAWN_START_TICKS = 20;
 	public static final int MOB_SPAWN_END_TICKS = 80;
 	public static final int MOB_SPAWN_BASE_TICKS = 800;
 	public static final int MOB_SPAWN_TICKS = MOB_SPAWN_BASE_TICKS + MOB_SPAWN_START_TICKS + MOB_SPAWN_END_TICKS;
-	public static final int MOB_SPAWN_WAVES = 10;
+	public static final int MOB_SPAWN_WAVES = 15;
 	public static final int MOB_SPAWN_WAVE_TIME = MOB_SPAWN_BASE_TICKS / MOB_SPAWN_WAVES;
 
 	private static final String TAG_INVUL_TIME = "invulTime";
@@ -206,6 +206,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 			e.setPlayerCount(playerCount);
 			e.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth).setBaseValue(MAX_HP * playerCount);
+			if (hard) e.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth).setBaseValue(MAX_HP_HARD * playerCount);
 
 			par3World.playSoundAtEntity(e, "mob.enderdragon.growl", 10F, 0.1F);
 			par3World.spawnEntityInWorld(e);
@@ -365,14 +366,13 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 	}
 
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
+	public boolean attackEntityFrom(DamageSource par1DamageSource, float dmg) {
 		Entity e = par1DamageSource.getEntity();
 		if((par1DamageSource.damageType.equals("player")) && e != null && isTruePlayer(e) && getInvulTime() == 0) {
 			EntityPlayer player = (EntityPlayer) e;
 			if(!playersWhoAttacked.contains(player.getCommandSenderName()))
 				playersWhoAttacked.add(player.getCommandSenderName());
 
-			float dmg = par2;
 			boolean crit = false;
 			if(e instanceof EntityPlayer) {
 				EntityPlayer p = (EntityPlayer) e;
@@ -380,6 +380,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			}
 
 			int cap = crit ? 1500 : 1100;
+			setTPDelay(8);
 			return super.attackEntityFrom(par1DamageSource, Math.min(cap, dmg) * (isHardMode() ? 0.6F : 1F));
 		}
 		return false;
@@ -427,7 +428,6 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			if(!anyWithArmor)
 				((EntityPlayer) entitylivingbase).addStat(ModAchievements.gaiaGuardianNoArmor, 1);
 		}
-
 		worldObj.playSoundAtEntity(this, "random.explode", 20F, (1F + (worldObj.rand.nextFloat() - worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 		worldObj.spawnParticle("hugeexplosion", posX, posY, posZ, 1D, 0D, 0D);
 	}
@@ -670,29 +670,33 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 						for(int pl = 0; pl < playerCount; pl++)
 							for(int i = 0; i < 3 + worldObj.rand.nextInt(2); i++) {
 								EntityLiving entity = null;
-								switch(worldObj.rand.nextInt(2)) {
+								switch(worldObj.rand.nextInt(3)) {
 								case 0 : {
 									entity = new EntityZombieTFC(worldObj);
-									if(worldObj.rand.nextInt(hard ? 3 : 12) == 0)
-										entity = new EntitySpiderTFC(worldObj);
-
+									if(worldObj.rand.nextInt(hard ? 5 : 22) == 0)
+										entity = new EntitySkeletonTFC(worldObj);
 									break;
 								}
 								case 1 : {
 									entity = new EntityZombieTFC(worldObj);
-
-		
+									if(worldObj.rand.nextInt(hard ? 3 : 12) == 0)
+										entity = new EntitySpiderTFC(worldObj);
+									if(worldObj.rand.nextInt(hard ? 1 : 80) == 0) {
+										entity = new EntityBear(worldObj);
+										entity.setHealth(1500);
+									}
 									break;
 								}
 								case 2 : {
-									if(!players.isEmpty())
-										for(int j = 0; j < 1 + worldObj.rand.nextInt(hard ? 8 : 5); j++) {
+									if(!players.isEmpty()&&hard)
+										for(int j = 0; j < 1 + worldObj.rand.nextInt(8); j++) {
 											EntityPixie pixie = new EntityPixie(worldObj);
 											pixie.setProps(players.get(rand.nextInt(players.size())), this, 1, 8);
 											pixie.setPosition(posX + width / 2, posY + 2, posZ + width / 2);
-											worldObj.spawnEntityInWorld(pixie);
+											pixie.setHealth(25);
+									 		worldObj.spawnEntityInWorld(pixie);
 										}
-								}
+							    	}
 								}
 
 								if(entity != null) {
@@ -759,7 +763,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 				range = 3F;
 				players = worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(posX - range, posY - range, posZ - range, posX + range, posY + range, posZ + range));
 				if(!players.isEmpty())
-					damageEntity(DamageSource.causePlayerDamage(players.get(0)), 0);
+					damageEntity(DamageSource.causePlayerDamage(players.get(0)), 20);
 			}
 		}
 	}

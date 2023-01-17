@@ -38,7 +38,7 @@ public class EntityPixie extends EntityFlyingCreature {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2.0);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0);
 	}
 
 	public void setType(int type) {

@@ -79,11 +79,8 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 							float mz = (float) (Math.random() - 0.5) * m;
 							supertile.getWorldObj().spawnParticle("iconcrack_" + Item.getIdFromItem(stack.getItem()), item.posX, item.posY, item.posZ, mx, my, mz);
 						}
-							
 				}
-
-				if(!remote)
-					item.setDead();
+				if(!remote) item.setDead();
 			}
 		}
 	}
