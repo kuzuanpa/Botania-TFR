@@ -681,9 +681,9 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 									entity = new EntityZombieTFC(worldObj);
 									if(worldObj.rand.nextInt(hard ? 3 : 12) == 0)
 										entity = new EntitySpiderTFC(worldObj);
-									if(worldObj.rand.nextInt(hard ? 1 : 80) == 0) {
+									if(worldObj.rand.nextInt(hard ? 48 : 80) == 0) {
 										entity = new EntityBear(worldObj);
-										entity.setHealth(1500);
+										entity.setHealth(1700);
 									}
 									break;
 								}
