@@ -668,9 +668,9 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 
 					if(reverseTicks > MOB_SPAWN_START_TICKS * 2 && mobTicks > MOB_SPAWN_END_TICKS && mobTicks % MOB_SPAWN_WAVE_TIME == 0 && !worldObj.isRemote) {
 						for(int pl = 0; pl < playerCount; pl++)
-							for(int i = 0; i < 3 + worldObj.rand.nextInt(2); i++) {
+							for(int i = 0; i < 3 + worldObj.rand.nextInt(hard?4:2); i++) {
 								EntityLiving entity = null;
-								switch(worldObj.rand.nextInt(3)) {
+								switch(worldObj.rand.nextInt(2)) {
 								case 0 : {
 									entity = new EntityZombieTFC(worldObj);
 									if(worldObj.rand.nextInt(hard ? 5 : 22) == 0)
@@ -687,16 +687,6 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 									}
 									break;
 								}
-								case 2 : {
-									if(!players.isEmpty()&&hard)
-										for(int j = 0; j < 1 + worldObj.rand.nextInt(8); j++) {
-											EntityPixie pixie = new EntityPixie(worldObj);
-											pixie.setProps(players.get(rand.nextInt(players.size())), this, 1, 8);
-											pixie.setPosition(posX + width / 2, posY + 2, posZ + width / 2);
-											pixie.setHealth(25);
-									 		worldObj.spawnEntityInWorld(pixie);
-										}
-							    	}
 								}
 
 								if(entity != null) {
