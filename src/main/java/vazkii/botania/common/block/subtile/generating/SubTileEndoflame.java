@@ -22,6 +22,7 @@ import vazkii.botania.api.lexicon.LexiconEntry;
 import vazkii.botania.api.subtile.RadiusDescriptor;
 import vazkii.botania.api.subtile.SubTileGenerating;
 import vazkii.botania.common.block.ModBlocks;
+import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lexicon.LexiconData;
 
 public class SubTileEndoflame extends SubTileGenerating {
@@ -45,7 +46,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 					
 					List<EntityItem> items = supertile.getWorldObj().getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - RANGE, supertile.yCoord - RANGE, supertile.zCoord - RANGE, supertile.xCoord + RANGE + 1, supertile.yCoord + RANGE + 1, supertile.zCoord + RANGE + 1));
 					for(EntityItem item : items) {
-						if(item.age >= (59 + slowdown) && !item.isDead) {
+						if(item.age >= (59 + slowdown) && !item.isDead&&!item.getEntityItem().getItem().equals(ModItems.terraPick)) {
 							ItemStack stack = item.getEntityItem();
 							if(stack.getItem().hasContainerItem(stack))
 								continue;
@@ -95,7 +96,7 @@ public class SubTileEndoflame extends SubTileGenerating {
 
 	@Override
 	public int getValueForPassiveGeneration() {
-		return 3;
+		return 2;
 	}
 
 	@Override

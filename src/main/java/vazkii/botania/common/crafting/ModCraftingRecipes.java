@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -297,6 +298,8 @@ public final class ModCraftingRecipes {
 	public static List<IRecipe> recipesAltGrassSeeds;
 	public static IRecipe recipeSpeedUpBelt;
 	public static IRecipe recipeBaubleCase;
+
+	public static IRecipe recipeSpellCloth;
 
 	// Garden of Glass
 	public static IRecipe recipeRootToSapling;
@@ -2034,6 +2037,16 @@ public final class ModCraftingRecipes {
 				'C', new ItemStack(Blocks.chest),
 				'G', "ingotGold");
 		recipeBaubleCase = BotaniaAPI.getLatestAddedRecipe();
+
+// SpellCloth Recipe
+		addOreDictRecipe(new ItemStack(ModItems.spellCloth),
+				"MLM", "PCP", "MGM",
+				'C', LibOreDict.MANAWEAVE_CLOTH,
+				'P', LibOreDict.GAIA_INGOT,
+				'L', LibOreDict.RUNE[11],
+				'G', LibOreDict.RUNE[9],
+		        'M', LibOreDict.RUNE[8]);
+		recipeSpellCloth = BotaniaAPI.getLatestAddedRecipe();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -975,7 +975,8 @@ public final class LexiconData {
 		worldSeed.setLexiconPages(new PageText("0"), new PageCraftingRecipe("1", ModCraftingRecipes.recipeWorldSeed));
 
 		spellCloth = new BLexiconEntry(LibLexicon.TOOL_SPELL_CLOTH, categoryTools);
-		spellCloth.setLexiconPages(new PageText("0"));
+		spellCloth.setLexiconPages(new PageText("0"),
+		        new PageCraftingRecipe("1", ModCraftingRecipes.recipeSpellCloth));
 
 		thornChakram = new BLexiconEntry(LibLexicon.TOOL_THORN_CHAKRAM, categoryTools);
 		thornChakram.setLexiconPages(new PageText("0"),
