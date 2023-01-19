@@ -31,6 +31,8 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 	private static final int RANGE = 1;
 
 	int cooldown = 0;
+	int destroyCooldown = 0;
+
 	int storedMana = 0;
 	int repeatNum = 0;
 	ItemFood lastFood = null;
@@ -80,7 +82,11 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 							supertile.getWorldObj().spawnParticle("iconcrack_" + Item.getIdFromItem(stack.getItem()), item.posX, item.posY, item.posZ, mx, my, mz);
 						}
 				}
-				if(!remote) item.setDead();
+				if(!remote && destroyCooldown == 0) {
+					item.getEntityItem().stackSize--;
+				    destroyCooldown = 1;
+				}
+				destroyCooldown --;
 			}
 		}
 	}
