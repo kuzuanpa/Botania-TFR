@@ -2624,6 +2624,14 @@ botania.page.dandelifeon7=&1细胞方块&0可由&1仙人掌&0,&1胡萝卜&0 和&
 botania.page.dandelifeon8=&o细胞工艺^2&r.
 botania.page.dandelifeon9=制作&1细胞方块&0
 
+# -- MUSICDANCLIUS
+botania.entry.musicdanclius=乐舞莲
+botania.tagline.musicdanclius=快乐魔法
+botania.page.musicdanclius0= &1乐舞莲&0可以感受玩家舞步中 愉快的情绪,将它转化为情绪 能量.<br>情绪能量可以被缓慢地转化 为魔力,就像发条一样
+botania.page.musicdanclius1=虽然它不会检测周围有没有 音乐,但是&1机械重复&0的舞蹈并 不会产生太多情绪能量,不要 想着用挂机池对付它.
+botania.page.musicdanclius2=跟随音乐起舞
+
+
 # - MAGICAL APPARATUS
 # -- MANA PYLON
 botania.entry.pylon=魔法水晶

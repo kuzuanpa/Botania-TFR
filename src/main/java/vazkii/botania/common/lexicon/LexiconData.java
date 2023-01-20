@@ -130,6 +130,7 @@ public final class LexiconData {
 	public static LexiconEntry thermalily;
 	public static LexiconEntry arcaneRose;
 	public static LexiconEntry munchdew;
+	public static LexiconEntry musicDanclius;
 	public static LexiconEntry entropinnyum;
 	public static LexiconEntry kekimurus;
 	public static LexiconEntry gourmaryllis;
@@ -678,6 +679,10 @@ public final class LexiconData {
 		munchdew = new BLexiconEntry(LibLexicon.GFLOWER_MUNCHDEW, categoryGenerationFlowers);
 		munchdew.setLexiconPages(new PageText("0"), new PageText("1"),
 				new PagePetalRecipe("2", ModPetalRecipes.munchdewRecipe));
+
+		musicDanclius = new BLexiconEntry(LibLexicon.GFLOWER_MUSICDANCLIUS, categoryGenerationFlowers);
+		musicDanclius.setLexiconPages(new PageText("0"), new PageText("1"),
+				new PagePetalRecipe("2", ModPetalRecipes.musicDancliusrecipe));
 
 		entropinnyum = new BLexiconEntry(LibLexicon.GFLOWER_ENTROPINNYUM, categoryGenerationFlowers);
 		entropinnyum.setLexiconPages(new PageText("0"));

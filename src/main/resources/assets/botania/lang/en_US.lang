@@ -2619,6 +2619,13 @@ botania.page.dandelifeon7=&1Cellular Blocks&0 are crafted with &1Cactus&0, &1Car
 botania.page.dandelifeon8=&oCellCraft^2&r.
 botania.page.dandelifeon9=Creating &1Cellular Blocks&0
 
+# -- MUSICDANCLIUS
+botania.entry.musicdanclius=MusicDanclius
+botania.tagline.musicdanclius=Mugic of Happiness
+botania.page.musicdanclius0= &1MusicDanclius&0 can detect happiness from players dancing around, and convert them into &1Emotion Energy&0.<br>Then Emotion Energy can be convert to mana slowly, just like the mainspring in clock.
+botania.page.musicdanclius1=Although it wouldn't detect if there have music, but &1repeating&0 same motion cannot generate many emotion energy. Don't trick it with machine that just keep you moving.
+botania.page.musicdanclius2=Dance with music
+
 # - NATURAL APPARATUS
 # -- MANA PYLON
 botania.entry.pylon=Mana Pylon

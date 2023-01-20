@@ -43,6 +43,7 @@ public final class ModPetalRecipes {
 	public static RecipePetals thermalilyRecipe;
 	public static RecipePetals arcaneRoseRecipe;
 	public static RecipePetals munchdewRecipe;
+	public static RecipePetals musicDancliusrecipe;
 	public static RecipePetals kekimurusRecipe;
 	public static RecipePetals gourmaryllisRecipe;
 	public static RecipePetals narslimmusRecipe;
@@ -87,7 +88,8 @@ public final class ModPetalRecipes {
 		thermalilyRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_THERMALILY), red, orange, orange, runeEarth, runeFire);
 		arcaneRoseRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_ARCANE_ROSE), pink, pink, purple, purple, lime, runeMana);
 		munchdewRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_MUNCHDEW), lime, lime, red, red, green, runeGluttony);
-	
+		musicDancliusrecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_MUSICDANCLIUS), lime, lime ,lightBlue, red, purple, runeAir);
+
 		kekimurusRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_KEKIMURUS), white, white, orange, orange, brown, brown,runeGluttony, pixieDust);
 		gourmaryllisRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_GOURMARYLLIS), lightGray, lightGray, yellow, yellow, red, runeFire, runeSummer);
 		narslimmusRecipe = BotaniaAPI.registerPetalRecipe(ItemBlockSpecialFlower.ofType(LibBlockNames.SUBTILE_NARSLIMMUS), lime, lime, green, green, black, runeSummer, runeWater);
