@@ -380,7 +380,7 @@ public class EntityDoppleganger extends EntityCreature implements IBotaniaBossWi
 			}
 
 			int cap = crit ? 1500 : 1100;
-			setTPDelay(8);
+			setTPDelay(2);
 			return super.attackEntityFrom(par1DamageSource, Math.min(cap, dmg) * (isHardMode() ? 0.6F : 1F));
 		}
 		return false;

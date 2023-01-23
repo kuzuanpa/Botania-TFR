@@ -94,8 +94,9 @@ public class ItemBlockSpecialFlower extends ItemBlockMod implements IRecipeKeyPr
 		}
 
 		String mod = BotaniaAPI.subTileMods.get(type);
+		if(mod != null){
 		if(!mod.equals(LibMisc.MOD_ID))
-			par3List.add(EnumChatFormatting.ITALIC + "[" + mod + "]");
+			par3List.add(EnumChatFormatting.ITALIC + "[" + mod + "]");}
 	}
 
 	public static String getType(ItemStack stack) {
