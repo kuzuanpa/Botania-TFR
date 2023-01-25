@@ -171,9 +171,8 @@ public class SubTileDandelifeon extends SubTileGenerating {
 			mana = Math.min(getMaxMana(), mana + val);
 			//world.setBlockToAir(x, y, z);
 		} else if(blockAt == ModBlocks.cellBlock) {
-			if(gen < 0 || gen > MAX_GENERATIONS)
-				((TileCell) tile).setGeneration(supertile, MAX_GENERATIONS);
-			else ((TileCell) tile).setGeneration(supertile, gen);
+			if(gen < 0 ) world.setBlockToAir(x,y,z);
+				else ((TileCell) tile).setGeneration(supertile, Math.min(gen, MAX_GENERATIONS));
 		} else if(gen >= 0 && blockAt.isAir(supertile.getWorldObj(), x, y, z)) {
 			world.setBlock(x, y, z, ModBlocks.cellBlock);
 			tile = world.getTileEntity(x, y, z);
