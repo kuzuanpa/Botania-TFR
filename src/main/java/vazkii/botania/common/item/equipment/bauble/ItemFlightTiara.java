@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -41,6 +42,7 @@ import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
+import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import vazkii.botania.api.BotaniaAPI;
@@ -187,6 +189,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 				if(!wasSprting && isSprinting && cooldown == 0) {
 					p.motionX += look.x;
 					p.motionZ += look.z;
+					FMLLog.log(Level.FATAL,"a"+look.z+"/"+look.x);
 					p.worldObj.playSoundAtEntity(p, "botania:dash", 1F, 1F);
 					ItemNBTHelper.setInt(stack, TAG_DASH_COOLDOWN, maxCd);
 				} else if(cooldown > 0) {
