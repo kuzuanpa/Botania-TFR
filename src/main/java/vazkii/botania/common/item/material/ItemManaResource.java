@@ -33,6 +33,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import vazkii.botania.api.recipe.IElvenItem;
@@ -43,12 +44,13 @@ import vazkii.botania.common.achievement.IPickupAchievement;
 import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.entity.EntityDoppleganger;
 import vazkii.botania.common.entity.EntityEnderAirBottle;
+import vazkii.botania.common.item.ItemMod;
 import vazkii.botania.common.item.equipment.tool.ToolCommons;
 import vazkii.botania.common.lib.LibItemNames;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-public class ItemManaResource extends Item implements IFlowerComponent, IElvenItem, IPickupAchievement {
+public class ItemManaResource extends ItemMod implements IFlowerComponent, IElvenItem, IPickupAchievement {
 
 	final int types = 24;
 	IIcon[] icons;
@@ -62,9 +64,9 @@ public class ItemManaResource extends Item implements IFlowerComponent, IElvenIt
 
 	public ItemManaResource() {
 		super();
-		setUnlocalizedName(LibItemNames.MANA_RESOURCE);
 		setHasSubtypes(true);
-		
+		setUnlocalizedName(LibItemNames.MANA_RESOURCE);
+
 	}
 
 

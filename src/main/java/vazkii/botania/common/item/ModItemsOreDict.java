@@ -55,7 +55,6 @@ public final class ModItemsOreDict {
         BotaniaAPI.blackListItemFromLoonium(blackLotus);
 
         //TFC
-        OreDictionary.registerOre("MANA_STEEL", new ItemStack(manaResource, 1, 0));
         OreDictionary.registerOre("rodBlaze", Items.blaze_rod);
         OreDictionary.registerOre("powderBlaze", Items.blaze_powder);
         FMLLog.log(Level.INFO,"[Botania] Registered OreDict");

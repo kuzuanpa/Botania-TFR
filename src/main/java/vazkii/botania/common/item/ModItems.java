@@ -425,7 +425,7 @@ public final class ModItems {
 		terrasteelXZ = new ItemPickaxe("UnfinishedterrasteelBooots");
 		int min = Item.getIdFromItem(Items.record_13);
 		int max = Item.getIdFromItem(Items.record_wait);
-		GameRegistry.registerItem(manaResource, manaResource.getUnlocalizedName());
+
 		ModItemHeat.setupItemHeat();
 		for (int i = min; i <= max; i++)
 			BotaniaAPI.blackListItemFromLoonium(Item.getItemById(i));
