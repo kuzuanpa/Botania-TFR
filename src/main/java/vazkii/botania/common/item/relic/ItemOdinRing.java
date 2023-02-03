@@ -5,17 +5,15 @@
  * 
  * Botania is Open Source and distributed under the
  * Botania License: http://botaniamod.net/license.php
- * 
+  *
  * File Created @ [Mar 29, 2015, 10:13:41 PM (GMT)]
  */
 package vazkii.botania.common.item.relic;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import baubles.api.BaubleType;
+import baubles.common.container.InventoryBaubles;
+import baubles.common.lib.PlayerHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -24,20 +22,14 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import vazkii.botania.common.core.handler.ConfigHandler;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
-import baubles.api.BaubleType;
-import baubles.common.container.InventoryBaubles;
-import baubles.common.lib.PlayerHandler;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemOdinRing extends ItemRelicBauble {
 
 	public static List<String> damageNegations = new ArrayList();
 
-	Multimap<String, AttributeModifier> attributes = HashMultimap.create();
 
 	public ItemOdinRing() {
 		super(LibItemNames.ODIN_RING);
@@ -86,24 +78,6 @@ public class ItemOdinRing extends ItemRelicBauble {
 		return stack != null && (stack.getItem() == ModItems.odinRing || stack.getItem() == ModItems.aesirRing);
 	}
 
-	@Override
-	public void onEquippedOrLoadedIntoWorld(ItemStack stack, EntityLivingBase player) {
-		attributes.clear();
-		fillModifiers(attributes, stack);
-		player.getAttributeMap().applyAttributeModifiers(attributes);
-	}
-
-	@Override
-	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		attributes.clear();
-		fillModifiers(attributes, stack);
-		player.getAttributeMap().removeAttributeModifiers(attributes);
-	}
-
-
-	void fillModifiers(Multimap<String, AttributeModifier> attributes, ItemStack stack) {
-		attributes.put(SharedMonsterAttributes.maxHealth.getAttributeUnlocalizedName(), new AttributeModifier(getBaubleUUID(stack), "Bauble modifier", 1000, 0));
-	}
 
 }
 

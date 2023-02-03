@@ -10,11 +10,9 @@
  */
 package vazkii.botania.common.item.relic;
 
-import java.util.List;
-
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
+import baubles.api.BaubleType;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -32,17 +30,11 @@ import vazkii.botania.common.achievement.ModAchievements;
 import vazkii.botania.common.crafting.recipe.AesirRingRecipe;
 import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.lib.LibItemNames;
-import baubles.api.BaubleType;
 
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
+import java.util.List;
 
 public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframeCoordinateListProvider, ICraftAchievement {
 
-	Multimap<String, AttributeModifier> attributes = HashMultimap.create();
 
 	public ItemAesirRing() {
 		super(LibItemNames.AESIR_RING);
@@ -92,25 +84,6 @@ public class ItemAesirRing extends ItemRelicBauble implements IExtendedWireframe
 	@Override
 	public ChunkCoordinates getSourceWireframe(EntityPlayer player, ItemStack stack) {
 		return null;
-	}
-
-	@Override
-	public void onEquippedOrLoadedIntoWorld(ItemStack stack, EntityLivingBase player) {
-		attributes.clear();
-		fillModifiers(attributes, stack);
-		player.getAttributeMap().applyAttributeModifiers(attributes);
-	}
-
-	@Override
-	public void onUnequipped(ItemStack stack, EntityLivingBase player) {
-		attributes.clear();
-		fillModifiers(attributes, stack);
-		player.getAttributeMap().removeAttributeModifiers(attributes);
-	}
-
-
-	void fillModifiers(Multimap<String, AttributeModifier> attributes, ItemStack stack) {
-		attributes.put(SharedMonsterAttributes.maxHealth.getAttributeUnlocalizedName(), new AttributeModifier(getBaubleUUID(stack), "Bauble modifier", 1000, 0));
 	}
 
 	@Override
