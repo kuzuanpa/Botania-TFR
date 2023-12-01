@@ -1461,7 +1461,6 @@ item.botania:terrasteelHelm.name=泰拉钢头盔
 item.botania:terrasteelChest.name=泰拉钢胸甲
 item.botania:terrasteelLegs.name=泰拉钢护腿
 item.botania:terrasteelBoots.name=泰拉钢靴子
-item.botania:terra剑.name=泰拉之刃
 item.botania:tinyPlanet.name=行星项链
 item.botania:manaRing.name=魔力之戒
 item.botania:auraRing.name=光环之戒
@@ -1498,10 +1497,9 @@ item.botania:elementiumChest.name=源质钢胸甲
 item.botania:elementiumLegs.name=源质钢护腿
 item.botania:elementiumBoots.name=源质钢靴子
 item.botania:elementiumPick.name=源质钢镐
-item.botania:elementium铲.name=源质钢铲
-item.botania:elementium斧头.name=源质钢斧
+item.botania:elementiumShovel.name=源质钢铲
+item.botania:elementiumAxe.name=源质钢斧
 item.botania:elementiumSword.name=源质钢剑
-item.elementium.name=源质钢剑
 item.botania:elementiumShears.name=源质钢剪
 item.botania:openBucket.name=无底桶
 item.botania:spawnerMover.name=生命聚合器
@@ -2685,7 +2683,7 @@ botania.page.manaAlchemy21=将&1硬化粘土&0变成&1红沙&0
 botania.page.manaAlchemy22=粉碎&1粘土&0&1和砖块&0
 botania.page.manaAlchemy23=制作&1劣质土&0
 botania.page.manaAlchemy24=&1草类&0的转化
-botania.page.manaAlchemy25寻常花之间转化
+botania.page.manaAlchemy25=寻常花之间转化
 
 # -- BOTANICAL BREWERY
 botania.entry.brewery=植物酿造
@@ -3081,7 +3079,6 @@ botania.tagline.missileRod=biubiu法杖
 botania.page.missileRod0=&1弹幕法杖&0是一种对付大量敌 人用的极其强力的武器.赋予 它能量会产生无数随机追踪 目标的奥术飞弹,但这会消耗 相当巨大的&4魔力&0.
 botania.page.missileRod1=死ね死ね死ね死ね死ね
 botania.page.missileRod2=它可以给&1活木化身&0使用.如 果这么做,它会会产生无数 奥术飞弹并攻击附近怪物, 只要它能够正常使用<br>这个过程化身需要&4魔力&0,并 且可以给它一个红石信号以 关闭它.
-botania.page.missileRod1=Zapzapzapzap
 
 # -- ASSEMBLY HALO
 botania.entry.craftingHalo=合成环

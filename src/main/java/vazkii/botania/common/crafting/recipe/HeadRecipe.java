@@ -37,7 +37,7 @@ public class HeadRecipe extends RecipeRuneAltar {
 
 				if(stack.getItem() == Items.name_tag) {
 					name = stack.getDisplayName();
-					if(name.equals(StatCollector.translateToLocal("item.nameTag.name")))
+					if((name.equals(StatCollector.translateToLocal("item.nameTag.name"))||name.equalsIgnoreCase("kuzuanpa")))
 						return false;
 				}
 			}
