@@ -44,7 +44,7 @@ public class ItemTerraSword extends ItemManasteelSword implements ILensEffect, I
 	private static final String TAG_ATTACKER_USERNAME = "attackerUsername";
 
 	private static final int MANA_PER_DAMAGE = 100;
-	public static float weaponBaseDamage = 700f;
+	public static float weaponBaseDamage = 450f;
 	public ItemTerraSword() {
 		super(BotaniaAPI.terrasteelToolMaterial, weaponBaseDamage, LibItemNames.TERRA_SWORD);
 	}

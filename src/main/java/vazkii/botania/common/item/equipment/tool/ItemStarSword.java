@@ -31,7 +31,7 @@ import vazkii.botania.common.lib.LibItemNames;
 public class ItemStarSword extends ItemManasteelSword implements ICraftAchievement {
 
 	private static final int MANA_PER_DAMAGE = 120;
-	private static float weaponBaseDamage = 800f;
+	private static final float weaponBaseDamage = 500f;
 	public ItemStarSword() {
 		super(BotaniaAPI.terrasteelToolMaterial, weaponBaseDamage, LibItemNames.STAR_SWORD);
 	}

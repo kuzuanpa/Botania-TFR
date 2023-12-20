@@ -261,8 +261,7 @@ public final class ModItems {
 	public static Item sextant;
 	public static Item speedUpBelt;
 	public static Item baubleBox;
-	public static Item MANA_STEEL;
-	
+
 	public static Item elementiumPickaxe;
 	public static Item MANA_STEELPickaxe;
 	public static Item terrasteelPickaxe;

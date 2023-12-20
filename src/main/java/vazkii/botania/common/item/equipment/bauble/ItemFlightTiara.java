@@ -187,11 +187,10 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 				final int maxCd = 80;
 				int cooldown = ItemNBTHelper.getInt(stack, TAG_DASH_COOLDOWN, 0);
 				if(!wasSprting && isSprinting && cooldown == 0) {
-					p.motionX += look.x;
-					p.motionZ += look.z;
-					FMLLog.log(Level.FATAL,"a"+look.z+"/"+look.x);
-					p.worldObj.playSoundAtEntity(p, "botania:dash", 1F, 1F);
-					ItemNBTHelper.setInt(stack, TAG_DASH_COOLDOWN, maxCd);
+				//	p.motionX += look.x;
+				//	p.motionZ += look.z;
+				//	p.worldObj.playSoundAtEntity(p, "botania:dash", 1F, 1F);
+				//	ItemNBTHelper.setInt(stack, TAG_DASH_COOLDOWN, maxCd);
 				} else if(cooldown > 0) {
 					if(maxCd - cooldown < 2)
 						player.moveFlying(0F, 1F, 5F);

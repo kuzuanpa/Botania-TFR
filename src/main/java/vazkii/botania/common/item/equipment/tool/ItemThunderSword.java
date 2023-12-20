@@ -36,7 +36,7 @@ import vazkii.botania.common.lib.LibItemNames;
 public class ItemThunderSword extends ItemManasteelSword implements ICraftAchievement {
 
 	private static final String TAG_LIGHTNING_SEED = "lightningSeed";
-	private static float weaponBaseDamage = 800f;
+	private static final float weaponBaseDamage = 500f;
 	public ItemThunderSword() {
 		super(BotaniaAPI.terrasteelToolMaterial, weaponBaseDamage, LibItemNames.THUNDER_SWORD);
 	}
