@@ -54,6 +54,7 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeManasteelLegs;
 	public static IRecipe recipeManasteelBoots;
 	public static IRecipe recipeLexicon;
+	public static IRecipe recipeRainbowRod;
 	public static List<IRecipe> recipesPetals;
 	public static List<IRecipe> recipesPetalBlocks;
 	public static List<IRecipe> recipesTwigWand;
@@ -1010,7 +1011,12 @@ public final class ModCraftingRecipes {
 		recipeSuperTravelBelt = BotaniaAPI.getLatestAddedRecipe();
 
 		// Rod of Bifrost Recipe
-
+		addOreDictRecipe(new ItemStack(ModItems.rainbowRod),
+				" PD", " EP", "E  ",
+				'P', LibOreDict.PIXIE_DUST,
+				'E', LibOreDict.ELEMENTIUM,
+				'D', LibOreDict.DRAGONSTONE);
+		recipeRainbowRod = BotaniaAPI.getLatestAddedRecipe();
 
 		// Spectral Platform Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.platform, 2, 1),

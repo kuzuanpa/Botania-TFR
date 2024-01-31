@@ -109,6 +109,7 @@ import vazkii.botania.common.item.rod.ItemDiviningRod;
 import vazkii.botania.common.item.rod.ItemFireRod;
 import vazkii.botania.common.item.rod.ItemGravityRod;
 import vazkii.botania.common.item.rod.ItemMissileRod;
+import vazkii.botania.common.item.rod.ItemRainbowRod;
 import vazkii.botania.common.item.rod.ItemSkyDirtRod;
 import vazkii.botania.common.item.rod.ItemSmeltRod;
 import vazkii.botania.common.item.rod.ItemTornadoRod;
@@ -184,6 +185,7 @@ public final class ModItems {
 	public static Item spawnerMover;
 	public static Item pixieRing;
 	public static Item superTravelBelt;
+	public static Item rainbowRod;
 	public static Item tornadoRod;
 	public static Item fireRod;
 	public static Item vineBall;
@@ -321,6 +323,7 @@ public final class ModItems {
 		divaCharm = new ItemDivaCharm();
 		flightTiara = new ItemFlightTiara();
 		enderDagger	= new ItemEnderDagger();
+		rainbowRod = new ItemRainbowRod();
 		quartz = new ItemQuartz();
 		waterRod = new ItemWaterRod();
 		elementiumHelm = new ItemElementiumHelm();
