@@ -68,7 +68,7 @@ public class ItemRainbowRod extends ItemMod implements IManaUsingItem, IAvatarWi
             int maxlen = prof ? 160 : 100;
             int time = prof ? (int) (TIME * 1.6) : TIME;
 
-            while(count < maxlen && (int) lx == (int) x && (int) ly == (int) y && (int) lz == (int) z || count < 4 || par2World.getBlock((int) x, (int) y, (int) z).isAir(par2World, (int) x, (int) y, (int) z) || par2World.getBlock((int) x, (int) y, (int) z) == place) {
+            while(count < maxlen && ((int) lx == (int) x && (int) ly == (int) y && (int) lz == (int) z || count < 4 || par2World.getBlock((int) x, (int) y, (int) z).isAir(par2World, (int) x, (int) y, (int) z) || par2World.getBlock((int) x, (int) y, (int) z) == place)) {
                 if(y >= 256 || y <= 0)
                     break;
 
