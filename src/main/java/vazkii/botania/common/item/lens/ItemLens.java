@@ -53,6 +53,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 			EFFICIENCY = 4,
 			BOUNCE = 5,
 			GRAVITY = 6,
+			MINE = 7,
 			DAMAGE = 8,
 			PHANTOM = 9,
 			MAGNET = 10,
@@ -113,6 +114,7 @@ public class ItemLens extends ItemMod implements ILensControl, ICompositableLens
 		setLens(EFFICIENCY, new LensEfficiency());
 		setLens(BOUNCE, new LensBounce());
 		setLens(GRAVITY, new LensGravity());
+		setLens(MINE, new LensMine());
 		setLens(DAMAGE, new LensDamage());
 		setLens(PHANTOM, new LensPhantom());
 		setLens(MAGNET, new LensMagnet());

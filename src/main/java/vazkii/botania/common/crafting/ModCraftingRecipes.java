@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -55,6 +54,8 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeManasteelBoots;
 	public static IRecipe recipeLexicon;
 	public static IRecipe recipeRainbowRod;
+	public static IRecipe recipeManaBlaster;
+	public static IRecipe recipeAdvancedManaBlaster;
 	public static List<IRecipe> recipesPetals;
 	public static List<IRecipe> recipesPetalBlocks;
 	public static List<IRecipe> recipesTwigWand;
@@ -1017,6 +1018,26 @@ public final class ModCraftingRecipes {
 				'E', LibOreDict.ELEMENTIUM,
 				'D', LibOreDict.DRAGONSTONE);
 		recipeRainbowRod = BotaniaAPI.getLatestAddedRecipe();
+
+		// Mana Blaster Recipe
+		addOreDictRecipe(new ItemStack(ModItems.manaGun),
+				"SMD", " WT", "  W",
+				'S', new ItemStack(ModBlocks.spreader, 1, 1),
+				'M', LibOreDict.RUNE[8],
+				'D', LibOreDict.MANA_DIAMOND,
+				'T', new ItemStack(Blocks.tnt),
+				'W', LibOreDict.LIVING_WOOD);
+		recipeManaBlaster = BotaniaAPI.getLatestAddedRecipe();
+
+		// Mana Blaster Recipe
+		addOreDictRecipe(new ItemStack(ModItems.advancedManaGun),
+				"SMD", " WT", "  W",
+				'S', new ItemStack(ModBlocks.spreader, 1, 3),
+				'M', LibOreDict.RUNE[8],
+				'D', LibOreDict.TERRA_STEEL,
+				'T', new ItemStack(Blocks.tnt),
+				'W', LibOreDict.DREAM_WOOD);
+		recipeAdvancedManaBlaster = BotaniaAPI.getLatestAddedRecipe();
 
 		// Spectral Platform Recipe
 		addOreDictRecipe(new ItemStack(ModBlocks.platform, 2, 1),

@@ -24,6 +24,7 @@ public final class LibItemNames {
 	public static final String SIGNAL_FLARE = "signalFlare";
 	public static final String MANA_TABLET = "manaTablet";
 	public static final String MANA_GUN = "manaGun";
+	public static final String MANA_GUN_ADVANCED = "manaGunGaia";
 	public static final String MANA_COOKIE = "manaCookie";
 	public static final String FERTILIZER = "fertilizer";
 	public static final String GRASS_SEEDS = "grassSeeds";

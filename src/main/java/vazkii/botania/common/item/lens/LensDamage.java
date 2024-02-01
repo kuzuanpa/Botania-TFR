@@ -18,6 +18,8 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
+import net.minecraft.util.EntityDamageSourceIndirect;
 import vazkii.botania.api.internal.IManaBurst;
 
 public class LensDamage extends Lens {
@@ -26,20 +28,24 @@ public class LensDamage extends Lens {
 	public void updateBurst(IManaBurst burst, EntityThrowable entity, ItemStack stack) {
 		AxisAlignedBB axis = AxisAlignedBB.getBoundingBox(entity.posX, entity.posY, entity.posZ, entity.lastTickPosX, entity.lastTickPosY, entity.lastTickPosZ).expand(1, 1, 1);
 		List<EntityLivingBase> entities = entity.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, axis);
-		for(EntityLivingBase living : entities) {
-			if(living instanceof EntityPlayer)
+		for (EntityLivingBase living : entities) {
+			if (living instanceof EntityPlayer)
 				continue;
 
-			if(living.hurtTime == 0) {
+			if (living.hurtTime == 0) {
 				int mana = burst.getMana();
-				if(mana >= 16) {
-					burst.setMana(mana - 16);
-					if(!burst.isFake() && !entity.worldObj.isRemote)
-						living.attackEntityFrom(DamageSource.magic, 8);
+
+				int manaCost=mana>160?mana/10:16;
+				if (!burst.isFake() && !entity.worldObj.isRemote) {
+					DamageSource src = entity.getThrower() != null ?
+							new EntityDamageSourceIndirect("indirectMagic", entity, living)
+							: DamageSource.magic;
+					living.attackEntityFrom(src, manaCost*20);
 					break;
 				}
+				burst.setMana(mana - manaCost);
+
 			}
 		}
 	}
-
 }

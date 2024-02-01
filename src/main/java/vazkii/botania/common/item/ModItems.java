@@ -12,8 +12,6 @@ package vazkii.botania.common.item;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import vazkii.botania.api.BotaniaAPI;
 import vazkii.botania.common.crafting.ModItemHeat;
 import vazkii.botania.common.item.brew.ItemBrewFlask;
@@ -114,11 +112,9 @@ import vazkii.botania.common.item.rod.ItemSkyDirtRod;
 import vazkii.botania.common.item.rod.ItemSmeltRod;
 import vazkii.botania.common.item.rod.ItemTornadoRod;
 import vazkii.botania.common.item.rod.ItemWaterRod;
-import vazkii.botania.common.lib.LibOreDict;
 
 import com.bioxx.tfc.api.Enums.EnumFoodGroup;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 public final class ModItems {
 
 	public static Item lexicon;
@@ -263,6 +259,8 @@ public final class ModItems {
 	public static Item sextant;
 	public static Item speedUpBelt;
 	public static Item baubleBox;
+	public static Item manaGun;
+	public static Item advancedManaGun;
 
 	public static Item elementiumPickaxe;
 	public static Item MANA_STEELPickaxe;
@@ -284,6 +282,8 @@ public final class ModItems {
 		rune = new ItemRune();
 		signalFlare = new ItemSignalFlare();
 		manaTablet = new ItemManaTablet();
+		manaGun = new ItemManaGun(false);
+		advancedManaGun = new ItemManaGun(true);
 		manaCookie = new ItemManaCookie(EnumFoodGroup.Grain);
 		fertilizer = new ItemFertilizer();
 		grassSeeds = new ItemGrassSeeds();
