@@ -15,6 +15,7 @@ import java.util.Random;
 
 import com.bioxx.tfc.Core.TFC_Climate;
 
+import com.bioxx.tfc.WorldGen.TFCProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.IGrowable;
@@ -160,6 +161,7 @@ public class BlockModFlower extends BlockFlower implements ILexiconable, IPickup
 
 	public boolean canGrowConditions(World world, int x, int y, int z, int flowerMeta)
 	{
+		if (!(world.provider instanceof TFCProvider)) {return true;}
 		float evt = TFC_Climate.getCacheManager(world).getEVTLayerAt(x, z).floatdata1;
 		float rain = TFC_Climate.getRainfall(world, x, 144, z);
 		float bioTemperature =TFC_Climate.getBioTemperatureHeight(world, x, y, z) ;
