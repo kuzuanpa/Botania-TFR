@@ -204,7 +204,17 @@ public class TEForge extends NetworkTileEntity implements IInventory ,IManaRecei
 					}
 					else
 					{
-						fireItemStacks[i] = output;
+						if(output.getItem() instanceof ItemMeltedMetal){
+							if(getMold()==null||getMold().stackSize==0)return;
+							if(getMold().stackSize< output.stackSize){
+								fireItemStacks[i]= new ItemStack(output.getItem(),getMold().stackSize, output.getItemDamage());
+								getMold().stackSize=0;
+							}else {
+								fireItemStacks[i] = output;
+								getMold().stackSize-= output.stackSize;
+							}
+						}
+						else fireItemStacks[i] = output;
 					}
 
 
