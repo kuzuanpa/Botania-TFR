@@ -49,10 +49,10 @@ public class BlockTerraPlate extends BlockModContainer implements ILexiconable {
 	@Override
 	public boolean onBlockActivated(World worldObj, int x, int y, int z, EntityPlayer player, int s, float xs, float ys, float zs) {
 		ItemStack stack = player.getCurrentEquippedItem();
-		if(stack != null && stack.getItem() == ModItems.manaResource || stack.getItem() == TFCItems.blackSteelIngot) {
-			if(player == null || !player.capabilities.isCreativeMode) {
+		if(stack != null && (stack.getItem() == ModItems.manaResource || stack.getItem() == TFCItems.blackSteelIngot)) {
+			if(!player.capabilities.isCreativeMode) {
 				stack.stackSize--;
-				if(stack.stackSize == 0 && player != null)
+				if(stack.stackSize == 0)
 					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
 			}
 
