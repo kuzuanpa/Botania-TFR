@@ -43,7 +43,7 @@ public class SubTileRafflowsiaPlus extends SubTileGenerating {
 	// Below table generated from this spreadsheet:
 	// https://docs.google.com/spreadsheets/d/1D5qvYRrwm6-czKnXVIEjakt93I0asICgxnPJ_q6UCc0
 	// Function created from a best-fit approximation on the sorted raw mana costs of production of each flower.
-	private static final int[] STREAK_OUTPUTS = {2000, 2100, 2200, 2300, 3280, 4033, 4657, 5150, 6622, 7860, 10418, 12600, 14769, 16671, 19000, 25400, 33471, 40900, 47579, 53600, 59057, 64264, 69217, 74483, 79352, 83869, 88059, 92129, 96669, 100940, 105239, 112044, 118442, 124612, 130583, 136228, 141703, 178442, 213959, 247725, 279956, 313671, 345833, 377227, 437689, 495526, 553702, 638554 };
+	private static final int[] STREAK_OUTPUTS = {1600, 1800, 2000, 2300, 3280, 4033, 4657, 5150, 6622, 7860, 10418, 12600, 14769, 16671, 19000, 25400, 33471, 40900, 47579, 53600, 59057, 64264, 69217, 74483, 79352, 83869, 88059, 92129, 96669, 100940, 105239, 112044, 118442, 124612, 130583, 136228, 141703, 178442, 213959, 247725, 279956, 313671, 345833, 377227, 437689, 495526, 553702, 638554 };
 
 	private int getMaxStreak() {
 		return STREAK_OUTPUTS.length - 1;
@@ -51,10 +51,7 @@ public class SubTileRafflowsiaPlus extends SubTileGenerating {
 
 	private int getValueForStreak(int index) {
 		// special-case repeated first flowers
-		if (index != 0) {
-			lastFlowerCount = 0;
-		}
-		FMLLog.log(Level.FATAL,"Steak: "+index);
+		if (index != 0) {lastFlowerCount = 0;}
 		return STREAK_OUTPUTS[index] / ++lastFlowerCount;
 	}
 	/**
@@ -68,7 +65,7 @@ public class SubTileRafflowsiaPlus extends SubTileGenerating {
 		for (ListIterator<String> it = lastFlowers.listIterator(); it.hasNext();) {
 			int index = it.nextIndex();
 			String streakFlower = it.next();
-			FMLLog.log(Level.FATAL,streakFlower);
+
 			if (streakFlower.equals(flowerKey)) {
 				it.remove();
 				lastFlowers.add(0, streakFlower);
