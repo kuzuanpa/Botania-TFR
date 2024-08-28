@@ -54,7 +54,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
     private static final int CLIP_SLOTS = 6;
     private static final int COOLDOWN = 30;
-    private boolean isAdvanced=false;
+    private final boolean isAdvanced;
 
     IIcon[] icons;
 
@@ -82,7 +82,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
 
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-        int effCd = isAdvanced?COOLDOWN*2:COOLDOWN;
+        int effCd = isAdvanced?COOLDOWN*4:COOLDOWN;
         PotionEffect effect = par3EntityPlayer.getActivePotionEffect(Potion.digSpeed);
         if(effect != null)
             effCd -= (effect.getAmplifier() + 1) * 8;
@@ -195,10 +195,10 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
     public EntityManaBurst getBurst(EntityPlayer player, ItemStack stack, boolean request) {
         EntityManaBurst burst = new EntityManaBurst(player);
 
-        int maxMana = isAdvanced?300:120;
+        int maxMana = isAdvanced?400:120;
         int color = 0x20FF20;
         int ticksBeforeManaLoss = 60;
-        float manaLossPerTick = isAdvanced?4F:3F;
+        float manaLossPerTick = isAdvanced?6F:3F;
         float motionModifier = 5F;
         float gravity = 0F;
         BurstProperties props = new BurstProperties(maxMana, ticksBeforeManaLoss, manaLossPerTick, gravity, motionModifier, color);

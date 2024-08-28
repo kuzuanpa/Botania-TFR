@@ -1256,6 +1256,10 @@ tile.botania:flower.dandelifeon.name=Dandelifeon
 tile.botania:flower.dandelifeon.reference=C'est la vie
 tile.botania:flower.rafflowsia.name=Rafflowsia
 tile.botania:flower.rafflowsia.reference=Trap Hole Nightmare
+tile.botania:flower.rafflowsiaPlus.name=Rafflowsia
+tile.botania:flower.rafflowsiaPlus.reference=Trap Hole Nightmare
+tile.botania:flower.musicdanclius.name=Musicdanclius
+tile.botania:flower.musicdanclius.reference=Magical Dance
 
 # - FUNCTIONAL
 tile.botania:flower.bellethorn.name=Bellethorne
@@ -2578,7 +2582,7 @@ botania.entry.gourmaryllis=Gourmaryllis
 botania.tagline.gourmaryllis=Mana from food
 botania.page.gourmaryllis0=The &1Gourmaryllis&0 is one hungry flower. It'll eat up any food in a small area around it, and turn it into &4Mana&0.<br>There's a catch, though, it can only digest a single food at any given time, the &4Mana&0 is created when it's done. Any other food it finds, it'll also devour, but not create any mana from it.
 botania.page.gourmaryllis1=The amount of time it takes to digest a delicacy depends on its nutritional value, in layman's terms, the amount of food points it restores.<br>So, a &1Steak&0 will take four seconds to digest, a &1Carrot&0 will take two, a loaf of &1Bread&0 will take two and a half, so on. 
-botania.page.gourmaryllis2=The amount of &4Mana&0 created also makes use of this value, but in a way where the more nutritious the food is, the more efficient it is. For example, a single &1Steak&0 will produce more &1Mana&0 than two &1Carrots&0, both absolutely and per second.
+botania.page.gourmaryllis2=The amount of &4Mana&0 created also makes use of this value, but in a way where the more nutritious the food is, the more efficient it is. For example, a single &1Steak&0 will produce more &1Mana&0 than two &1Carrots&0, both absolutely and per second. <br> &1Gourmaryllis&0 dislike flat food recipes, giving him same food will decrease mana output.
 botania.page.gourmaryllis3=&oA hot pot for our new residents&r.
 
 # -- NARSLIMMUS
@@ -2603,6 +2607,14 @@ botania.page.rafflowsia2=Or so they believed. Soon enough, ingenious sages of th
 botania.page.rafflowsia3=The &1Rafflowsia&0 functions in a matter similar to the &1Kekimurus&0, with any sort of &4passive flowers&0, as in, it'll find any nearby placed on the floor and destroy them, creating &4Mana&0.<br>However, there are diminishing returns applied to this procedure, for the most effective usage, the same type of flower should not be destroyed multiple times in a row.
 botania.page.rafflowsia4=&oA New Dawn, you could say&r.
 
+
+# -- RAFFLOWSIAPlus //TODO
+botania.entry.rafflowsiaPlus=RafflowsiaPlus
+botania.tagline.rafflowsiaPlus=Mana from flowers
+botania.page.rafflowsiaPlus0=Once upon a time, the peasants of the nation found joy in planting enormous fields of &1Dayblooms&0, &1Nightshades&0 and &1Hydroangeas&0. The lowly citizens relished in the free intake of &4Mana&0 provenient of the various elements.<br>They were happy with their ignorance.
+botania.page.rafflowsiaPlus1=One day, however, the plebians woke up to their prized gardens withered away, all of their hard work turned into &1Dead Bushes&0.<br>Revolted at the betrayal of their Gods, the men and women of the nation exclaimed in a single voice: "Passive flowers are useless now!"
+botania.page.rafflowsiaPlus4=&oA New Dawn or a New Dusk?&r.
+
 # -- DANDELIFEON
 botania.entry.dandelifeon=Dandelifeon
 botania.tagline.dandelifeon=Mana from life
@@ -2612,7 +2624,7 @@ botania.page.dandelifeon1=This flower makes use of a cellular automata known as 
 botania.page.dandelifeon2=The game is executed with the concept of &4Cells&0. The 25x25 area can be seen as a grid of 25 by 25 cells<br>Cells may be live or dead, live if the block in that position is a &1Cellular Block&0 (read on) or dead if it's anything else. &4Neighbours&0 are the eight blocks in the same plane around any one cell.
 botania.page.dandelifeon3=Every step of the game, the following transitions might happen: &41)&0 Any live cell with fewer than two or more than three live neighbours dies. &42)&0 Any live cell with exactly two or three live neigbours lives on. &43)&0 Any dead cell with exactly three live neigbours becomes a live cell.
 botania.page.dandelifeon4=All of the transitions happen at the same time.<br>Aside from those, a few additional rules not present in a typical simulation of &4Conway's Game of Life&0 are also present in the &1Dandelifeon&0 procedures, listed in the following pages.
-botania.page.dandelifeon5=All cells have an age, starting at zero. Whenever a cell lives on, by having two or three neighbours, its age inreases by one. Whenever a dead cell becomes a live cell, the age of the new live cell is equal to the age of the oldest neighbour, plus one. Any cells older than sixty generations will die during the next step.
+botania.page.dandelifeon5=All cells have an age, starting at zero. Whenever a cell lives on, by having two or three neighbours, its age inreases by one. Whenever a dead cell becomes a live cell, the age of the new live cell is equal to the age of the oldest neighbour, plus one. Any cells older than 100 generations won't grow up anymore.
 botania.page.dandelifeon6=Second off, the 3x3 zone centered around the &1Dandelifeon&0 itself is not habitable by cells. Any live cells that would exist in that area are turned into &4Mana&0 instead. The older the cell that would be created, the more &4Mana&0 it makes. Age zero cells produce no &4Mana&0.
 botania.page.dandelifeon10=Whenever any live cells are absorbed by the 3x3 zone in the center, all other cells in the board die.<br>A few other restrictions apply to cells, such as having two different &1Dandelifeon&0 flowers affect the same cell will kill it. Lastly, any cell will die if moved by any other means than the &1Dandelifeon&0 itself.
 botania.page.dandelifeon7=&1Cellular Blocks&0 are crafted with &1Cactus&0, &1Carrots&0 and &1Potatoes&0, and are extremely fragile, they may not be picked once placed down or moved by &1Pistons&0 and may not be created (through having 3 live neighbours on a dead cell) on any block that isn't air.<br>If not within the range of a &1Dandelifeon&0 they work as normal building blocks.

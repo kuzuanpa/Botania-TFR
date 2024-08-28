@@ -40,7 +40,7 @@ public class SubTileRafflowsia extends SubTileGenerating {
 	public void onUpdate() {
 		super.onUpdate();
 
-		int mana = 1400;
+		int mana = 3000;
 
 		if(getMaxMana() - this.mana >= mana && !supertile.getWorldObj().isRemote && ticksExisted % 40 == 0) {
 			for(int i = 0; i < RANGE * 2 + 1; i++)
@@ -124,7 +124,7 @@ public class SubTileRafflowsia extends SubTileGenerating {
 
 	@Override
 	public int getMaxMana() {
-		return 9000;
+		return 15000;
 	}
 
 	@Override
