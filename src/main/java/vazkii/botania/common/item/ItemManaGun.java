@@ -196,7 +196,7 @@ public class ItemManaGun extends ItemMod implements IManaUsingItem {
         EntityManaBurst burst = new EntityManaBurst(player);
 
         int maxMana = isAdvanced?400:120;
-        int color = 0x20FF20;
+        int color = isAdvanced?0xff60dd:0x20FF20;
         int ticksBeforeManaLoss = 60;
         float manaLossPerTick = isAdvanced?6F:3F;
         float motionModifier = 5F;

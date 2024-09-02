@@ -1432,6 +1432,7 @@ item.botania:rune15.name=Rune of Pride
 item.botania:signalFlare.name=Signal Flare
 item.botania:manaTablet.name=Mana Tablet
 item.botania:manaGun.name=Mana Blaster
+item.botania:manaGunGaia.name=Gaia Mana Blaster
 item.botania:compositeLens.name=Composite Mana Lens: %s %s
 item.botania:manaCookie.name=Biscuit of Totality
 item.botania:fertilizer.name=Floral Fertilizer
