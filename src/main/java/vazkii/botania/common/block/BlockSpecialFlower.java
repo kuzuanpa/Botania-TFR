@@ -179,6 +179,7 @@ public class BlockSpecialFlower extends BlockFlower implements ITileEntityProvid
 
 	@Override
 	public IIcon getIcon(IBlockAccess par1iBlockAccess, int par2, int par3, int par4, int par5) {
+		if(!(par1iBlockAccess.getTileEntity(par2, par3, par4) instanceof TileSpecialFlower))return BlockModFlower.icons[16];
 		return ((TileSpecialFlower) par1iBlockAccess.getTileEntity(par2, par3, par4)).getIcon();
 	}
 
