@@ -2067,11 +2067,9 @@ public final class ModCraftingRecipes {
 
 // SpellCloth Recipe
 		addOreDictRecipe(new ItemStack(ModItems.spellCloth),
-				"MLM", "PCP", "MGM",
+				" M ", "CLC", " M ",
 				'C', LibOreDict.MANAWEAVE_CLOTH,
-				'P', LibOreDict.GAIA_INGOT,
 				'L', LibOreDict.RUNE[11],
-				'G', LibOreDict.RUNE[9],
 		        'M', LibOreDict.RUNE[8]);
 		recipeSpellCloth = BotaniaAPI.getLatestAddedRecipe();
 

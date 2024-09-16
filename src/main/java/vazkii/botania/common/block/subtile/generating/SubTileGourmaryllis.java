@@ -60,19 +60,18 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 					if(!remote) {
 						int val = ((ItemFood) stack.getItem()).func_150905_g(stack);
 						if (lastFood == (ItemFood) stack.getItem()){
-							repeatNum++;
+							if(repeatNum<9)repeatNum++;
 							storedMana = val * val * val * 16 / repeatNum ;
 							cooldown = (int) (val * 10 * Math.sqrt(repeatNum));
-							//FMLLog.log(Level.FATAL,"debug: Repeating"+lastFood+"/"+cooldown+"/"+storedMana);
 						}else {
 							lastFood = (ItemFood) stack.getItem();
 							repeatNum = 0;
 							storedMana = val * val * val * 16;
 							cooldown = val * 10;
-							//FMLLog.log(Level.FATAL,"debug: Not Repeating,last:"+lastFood+"/"+cooldown+"/"+storedMana);
 						}
 						supertile.getWorldObj().playSoundEffect(supertile.xCoord, supertile.yCoord, supertile.zCoord, "random.eat", 0.2F, 0.5F + (float) Math.random() * 0.5F);
 						sync();
+						destroyCooldown = 4;
 					} else 
 						for(int i = 0; i < 10; i++) {
 							float m = 0.2F;
@@ -84,7 +83,7 @@ public class SubTileGourmaryllis extends SubTileGenerating {
 				}
 				if(!remote && destroyCooldown == 0) {
 					item.getEntityItem().stackSize--;
-				    destroyCooldown = 1;
+				    destroyCooldown = 4;
 				}
 				destroyCooldown --;
 			}

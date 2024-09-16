@@ -51,10 +51,10 @@ public class SubTileMunchdew extends SubTileGenerating {
 			return;
 		}
 
-		int manaPerLeaf = 60;
+		int manaPerLeaf = 160;
 		eatLeaves : {
-			if(getMaxMana() - mana >= manaPerLeaf && !supertile.getWorldObj().isRemote && ticksExisted % 4 == 0) {
-				List<ChunkCoordinates> coords = new ArrayList();
+			if(getMaxMana() - mana >= manaPerLeaf && !supertile.getWorldObj().isRemote && ticksExisted % 5 == 0) {
+				List<ChunkCoordinates> coords = new ArrayList<>();
 				int x = supertile.xCoord;
 				int y = supertile.yCoord;
 				int z = supertile.zCoord;
@@ -97,7 +97,7 @@ public class SubTileMunchdew extends SubTileGenerating {
 
 		if(ateOnce) {
 			ticksWithoutEating++;
-			if(ticksWithoutEating >= 5)
+			if(ticksWithoutEating > 5)
 				cooldown = 1600;
 		}
 	}
