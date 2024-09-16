@@ -135,6 +135,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 	public int lastBurstDeathTick = -1;
 	public int burstParticleTick = 0;
 
+	public short receiverCheckTicks =0;
 	public int pingbackTicks = 0;
 	public double lastPingbackX = 0;
 	public double lastPingbackY = -1;
@@ -233,6 +234,9 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 
 		ItemStack lens = getStackInSlot(0);
 		ILensControl control = getLensController(lens);
+
+		if(receiver==null && receiverCheckTicks >=1200) checkForReceiver();
+		receiverCheckTicks++;
 		if(control != null) {
 			if(isredstone) {
 				if(shouldShoot)
@@ -448,6 +452,7 @@ public class TileSpreader extends TileSimpleInventory implements IManaCollector,
 	}
 
 	public void checkForReceiver() {
+		receiverCheckTicks=0;
 		ItemStack stack = getStackInSlot(0);
 		ILensControl control = getLensController(stack);
 		if(control != null && !control.allowBurstShooting(stack, this, false))
