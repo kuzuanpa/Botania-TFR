@@ -66,6 +66,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 		@SubscribeEvent
 		public void onPlayerInteract(PlayerInteractEvent event) {
+			if(true)return;//TODO: There is some bug in this item so we disable that now.
 			EntityPlayer player = event.entityPlayer;
 			ItemStack lokiRing = getLokiRing(player);
 			if(lokiRing == null || player.worldObj.isRemote)
