@@ -44,7 +44,12 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 		this.trueType = armorSlot;
 		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
-
+	public int getDamageRepairPerTick(){
+		return 10;
+	}
+	public int getManaPerDamage(){
+		return 10;
+	}
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {

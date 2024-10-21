@@ -67,8 +67,6 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 	public static Armor EltPlate = 	new Armor(12, 2200, 2500, 2200, "Elt Steel");
 	public static Armor Weave = 	new Armor(13, 500, 500, 500, "Weave");
 	public static Armor TerraSteelPlate = 		new Armor(14, 2400, 2700, 2400, "Terra Steel");
-	
-	private static final int MANA_PER_DAMAGE = 100;
 
 	private static final String TAG_PHANTOM_INK = "phantomInk";
 	public Armor armorTypeTFC;
@@ -126,13 +124,21 @@ public class ItemManasteelArmor extends ItemArmor implements ISpecialArmor, IMan
 
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-		if(!world.isRemote && stack.getItemDamage() > 0 && ManaItemHandler.requestManaExact(stack, player, MANA_PER_DAMAGE * 2, true))
-			stack.setItemDamage(stack.getItemDamage() - 1);
+		if(world.isRemote)return;
+		int repairAmount = Math.min(stack.getItemDamage(),getDamageRepairPerTick());
+		if(repairAmount == 0)return;
+		if(ManaItemHandler.requestManaExact(stack, player, getManaPerDamage() * repairAmount, true))stack.setItemDamage(stack.getItemDamage() - repairAmount);
 	}
 
+	public int getDamageRepairPerTick(){
+		return 4;
+	}
+	public int getManaPerDamage(){
+		return 25;
+	}
 	@Override
 	public void damageArmor(EntityLivingBase entity, ItemStack stack, DamageSource source, int damage, int slot) {
-		ToolCommons.damageItem(stack, damage, entity, MANA_PER_DAMAGE);
+		ToolCommons.damageItem(stack, damage, entity, getManaPerDamage());
 	}
 
 	@Override

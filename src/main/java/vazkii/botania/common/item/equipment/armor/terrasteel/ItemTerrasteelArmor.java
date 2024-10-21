@@ -47,6 +47,12 @@ public class ItemTerrasteelArmor extends ItemManasteelArmor {
 		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 
+	public int getDamageRepairPerTick(){
+		return 25;
+	}
+	public int getManaPerDamage(){
+		return 8;
+	}
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ModelBiped provideArmorModelForSlot(ItemStack stack, int slot) {
