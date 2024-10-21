@@ -50,7 +50,7 @@ public final class ToolCommons {
 		float blockHardness = block == null ? 1F : block.getBlockHardness(world, x, y, z);
 
 		for(int x1 = xs; x1 < xe; x1++)
-			for(int y1 = ye; y1 > ys; y1--)
+			for(int y1 = ye-1; y1 >= ys; y1--)
 				for(int z1 = zs; z1 < ze; z1++)
 					removeBlockWithDrops(player, stack, world, x1 + x, y1 + y, z1 + z, x, y, z, block, materialsListing, silk, fortune, blockHardness, dispose);
 	}
