@@ -78,6 +78,8 @@ public final class ModCraftingRecipes {
 	public static IRecipe recipeLensPhantom;
 	public static IRecipe recipeLensMagnet;
 	public static IRecipe recipeLensExplosive;
+	public static IRecipe recipeLensMiner;
+	public static IRecipe recipeLensOreFinder;
 	public static List<IRecipe> recipesUnstableBlocks;
 	public static IRecipe recipePylon;
 	public static IRecipe recipeDistributor;
@@ -511,6 +513,8 @@ public final class ModCraftingRecipes {
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 6), new ItemStack(ModItems.lens), LibOreDict.RUNE[7]);
 		recipeLensGravity = BotaniaAPI.getLatestAddedRecipe();
 
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 7), new ItemStack(ModItems.lens), LibOreDict.RUNE[11], LibOreDict.RUNE[2],LibOreDict.MANA_DIAMOND);
+		recipeLensMiner = BotaniaAPI.getLatestAddedRecipe();
 
 
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 8), new ItemStack(ModItems.lens), LibOreDict.RUNE[13]);
@@ -1157,6 +1161,9 @@ public final class ModCraftingRecipes {
 		// Flare Lens Recipe
 		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 21), new ItemStack(ModItems.lens), new ItemStack(ModBlocks.elfGlass), LibOreDict.ELEMENTIUM);
 		recipeLensFlare = BotaniaAPI.getLatestAddedRecipe();
+
+		addShapelessOreDictRecipe(new ItemStack(ModItems.lens, 1, 22), new ItemStack(ModItems.lens), LibOreDict.RUNE[3], LibOreDict.RUNE[8], LibOreDict.RUNE[11], LibOreDict.RUNE[12], LibOreDict.ELEMENTIUM, LibOreDict.ELEMENTIUM, LibOreDict.ELEMENTIUM, LibOreDict.ELEMENTIUM);
+		recipeLensOreFinder= BotaniaAPI.getLatestAddedRecipe();
 
 		// Mini Island Recipes
 		for(int i = 0; i < 16; i++)
