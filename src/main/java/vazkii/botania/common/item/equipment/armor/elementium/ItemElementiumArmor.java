@@ -28,10 +28,10 @@ public abstract class ItemElementiumArmor extends ItemManasteelArmor implements 
 		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 	public int getDamageRepairPerTick(){
-		return 16;
+		return 9;
 	}
 	public int getManaPerDamage(){
-		return 8;
+		return 20;
 	}
 	@Override
 	@SideOnly(Side.CLIENT)

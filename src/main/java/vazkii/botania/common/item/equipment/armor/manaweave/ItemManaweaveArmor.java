@@ -45,7 +45,7 @@ public class ItemManaweaveArmor extends ItemManasteelArmor implements ICraftAchi
 		this.setMaxDamage(armorTypeTFC.getDurability(armorSlot));
 	}
 	public int getDamageRepairPerTick(){
-		return 10;
+		return 9;
 	}
 	public int getManaPerDamage(){
 		return 10;

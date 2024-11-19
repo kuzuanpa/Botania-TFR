@@ -12,10 +12,12 @@
 package vazkii.botania.common.item.lens;
 
 import cn.kuzuanpa.ktfruaddon.client.render.FxRenderBlockOutline;
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MovingObjectPosition;
+import org.apache.logging.log4j.Level;
 import vazkii.botania.api.internal.IManaBurst;
 import vazkii.botania.api.mana.BurstProperties;
 
@@ -24,15 +26,18 @@ import java.awt.*;
 public class LensOreFinding extends Lens {
 
 	private static final int MANA_COST = 4;
+	private static final int MANA_COST_FOUND = 40;
 
 	@Override
 	public boolean collideBurst(IManaBurst burst, EntityThrowable entity, MovingObjectPosition pos, boolean isManaBlock, boolean dead, ItemStack stack) {
 		if(!isManaBlock) {
 			dead=false;
 			short[] color = cn.kuzuanpa.ktfruaddon.code.OreScanner.getOreColor(entity.worldObj,pos.blockX,pos.blockY,pos.blockZ);
-			if (color.length == 0)return false;
-
-			burst.setMana(burst.getMana()- MANA_COST);
+			if (color.length == 0){
+				burst.setMana(burst.getMana()- MANA_COST);
+				return false;
+			}
+			burst.setMana(burst.getMana()- MANA_COST_FOUND);
 			FxRenderBlockOutline.addBlockOutlineToRender(new ChunkCoordinates(pos.blockX,pos.blockY,pos.blockZ),new Color(color[0],color[1],color[2],color[3]).getRGB(), 2,System.currentTimeMillis()+30000);
 		}
 		return dead;
@@ -40,7 +45,7 @@ public class LensOreFinding extends Lens {
 
 	@Override
 	public void apply(ItemStack stack, BurstProperties props) {
-		props.motionModifier *= 4F;
+		props.motionModifier *= 2F;
 		props.maxMana *= 0.75F;
 		props.ticksBeforeManaLoss = 0;
 	}

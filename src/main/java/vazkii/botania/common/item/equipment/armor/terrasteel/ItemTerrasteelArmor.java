@@ -48,10 +48,10 @@ public class ItemTerrasteelArmor extends ItemManasteelArmor {
 	}
 
 	public int getDamageRepairPerTick(){
-		return 25;
+		return 16;
 	}
 	public int getManaPerDamage(){
-		return 8;
+		return 18;
 	}
 	@Override
 	@SideOnly(Side.CLIENT)
