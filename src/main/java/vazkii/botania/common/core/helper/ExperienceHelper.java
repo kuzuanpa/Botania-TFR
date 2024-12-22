@@ -16,7 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 public class ExperienceHelper {
 
 	public static int getPlayerXP(EntityPlayer player) {
-		return (int)(getExperienceForLevel(player.experienceLevel) + player.experience * player.xpBarCap());
+		return player.experienceTotal;
 	}
 
 	public static void drainPlayerXP(EntityPlayer player, int amount) {

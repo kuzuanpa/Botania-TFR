@@ -24,18 +24,18 @@ public class SubTileArcaneRose extends SubTileGenerating {
 
 	private static final int RANGE = 1;
 
+	int timer =0;
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-
-		if(mana >= getMaxMana())
-			return;
+		timer ++;
+		if(mana >= getMaxMana() || timer % 10 != 0) return;
 
 		List<EntityPlayer> players = supertile.getWorldObj().getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox(supertile.xCoord - RANGE, supertile.yCoord, supertile.zCoord - RANGE, supertile.xCoord + RANGE + 1, supertile.yCoord + 1, supertile.zCoord + RANGE + 1));
 		for(EntityPlayer player : players)
-			if(ExperienceHelper.getPlayerXP(player) >= 1 && player.onGround) {
-				ExperienceHelper.drainPlayerXP(player, 1);
-				mana += 50;
+			if(ExperienceHelper.getPlayerXP(player) >= 16 && player.onGround) {
+				ExperienceHelper.drainPlayerXP(player, 16);
+				mana += 600;
 				return;
 			}
 	}
