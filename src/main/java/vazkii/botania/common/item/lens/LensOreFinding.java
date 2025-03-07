@@ -11,7 +11,7 @@
  */
 package vazkii.botania.common.item.lens;
 
-import cn.kuzuanpa.ktfruaddon.client.render.FxRenderBlockOutline;
+import cn.kuzuanpa.ktfruaddon.api.client.fx.FxRenderBlockOutline;
 import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.ItemStack;
@@ -32,7 +32,7 @@ public class LensOreFinding extends Lens {
 	public boolean collideBurst(IManaBurst burst, EntityThrowable entity, MovingObjectPosition pos, boolean isManaBlock, boolean dead, ItemStack stack) {
 		if(!isManaBlock) {
 			dead=false;
-			short[] color = cn.kuzuanpa.ktfruaddon.code.OreScanner.getOreColor(entity.worldObj,pos.blockX,pos.blockY,pos.blockZ);
+			short[] color = cn.kuzuanpa.ktfruaddon.api.code.OreScanner.getOreColor(entity.worldObj,pos.blockX,pos.blockY,pos.blockZ);
 			if (color.length == 0){
 				burst.setMana(burst.getMana()- MANA_COST);
 				return false;
