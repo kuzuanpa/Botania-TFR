@@ -507,7 +507,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 
 		Minecraft mc = Minecraft.getMinecraft();
 		mc.renderEngine.bindTexture(textureHud);
-		int xo = resolution.getScaledWidth() / 2 + 10;
+		int xo = resolution.getScaledWidth() / 2 + 1;
 		int x = xo;
 		int y = resolution.getScaledHeight() - ConfigHandler.flightBarHeight;
 		if(player.getAir() < 300)
@@ -515,7 +515,7 @@ public class ItemFlightTiara extends ItemBauble implements IManaUsingItem, IBaub
 
 		int left = ItemNBTHelper.getInt(stack, TAG_TIME_LEFT, MAX_FLY_TIME);
 
-		int segTime = MAX_FLY_TIME / 10;
+		int segTime = MAX_FLY_TIME / 11;
 		int segs = left / segTime + 1;
 		int last = left % segTime;
 

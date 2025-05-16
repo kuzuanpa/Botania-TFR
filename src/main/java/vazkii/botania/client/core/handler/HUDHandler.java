@@ -75,7 +75,7 @@ public final class HUDHandler {
 		Minecraft mc = Minecraft.getMinecraft();
 		Profiler profiler = mc.mcProfiler;
 
-		if(event.type == ElementType.HEALTH) {
+		if(event.type == ElementType.HOTBAR) {
 			profiler.startSection("botania-hud");
 			ItemStack amulet = PlayerHandler.getPlayerBaubles(mc.thePlayer).getStackInSlot(0);
 			if(amulet != null && amulet.getItem() == ModItems.flightTiara) {

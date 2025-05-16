@@ -84,7 +84,7 @@ public class BOT implements IWorldGenerator
 			flowerChunkRarity -= 5;
 			mushroomsPerChunk += 1;
 		}
-		bioTemperature = TFC_Climate.getBioTemperatureHeight(world, chunkX, Global.SEALEVEL, chunkZ);
+		bioTemperature = TFC_Climate.getBioTemperatureHeight(world, chunkX, Global.worldHeightAverage, chunkZ);
 		if(bioTemperature < 10)
 		{
 			grassPerChunk /= 2;
