@@ -29,7 +29,7 @@ public class ItemModTFC extends ItemIngot{
 	public ItemModTFC() {
 		super();
 		this.setFolder("integration/");
-		setCreativeTab(BotaniaCreativeTab.INSTANCE);
+		this.setCreativeTab(BotaniaCreativeTab.INSTANCE);
 		this.setSize(EnumSize.TINY);
 		
 	}

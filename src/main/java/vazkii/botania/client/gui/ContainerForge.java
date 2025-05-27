@@ -2,6 +2,7 @@ package vazkii.botania.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -74,7 +75,7 @@ public class ContainerForge extends ContainerTFC
 			else
 			{
 				
-				if(slotStack.getItem() == TFCItems.coal)
+				if(slotStack.getItem() == Items.coal)
 				{
 					int j = 0;
 					while (j < 5)

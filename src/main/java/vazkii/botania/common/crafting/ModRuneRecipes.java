@@ -60,10 +60,10 @@ public final class ModRuneRecipes {
 		end2 = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.manaResource, 1, 15),end1,new ItemStack(Items.glass_bottle),new ItemStack(Blocks.end_stone));
 		recipeWaterRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 0), costTier1, LibOreDict.SXQ, LibOreDict.PETAL[11], LibOreDict.PETAL[11], "rockGtPetrifiedWood");
 		recipeWaterRune2 = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 0), costTier1, LibOreDict.SXQ, LibOreDict.PETAL[3], LibOreDict.PETAL[3], "rockGtPetrifiedWood");
-		recipeFireRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 1), costTier1, "rockGtPetrifiedWood", LibOreDict.MANA_STEEL, new ItemStack(TFCItems.coal), new ItemStack(Items.gunpowder), new ItemStack(TFCBlocks.thatch),"rockGtPetrifiedWood");
+		recipeFireRune = BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 1), costTier1, "rockGtPetrifiedWood", LibOreDict.MANA_STEEL, new ItemStack(Items.coal), new ItemStack(Items.gunpowder), new ItemStack(TFCBlocks.thatch),"rockGtPetrifiedWood");
 
 		recipesEarthRune = new ArrayList();
-		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, "stone", new ItemStack(TFCItems.coal), new ItemStack(TFCBlocks.tallGrass),"rockGtPetrifiedWood"));
+		recipesEarthRune.add(BotaniaAPI.registerRuneAltarRecipe(new ItemStack(ModItems.rune, 2, 2), costTier1, LibOreDict.MANA_POWDER, LibOreDict.MANA_STEEL, "stone", new ItemStack(Items.coal), new ItemStack(TFCBlocks.tallGrass),"rockGtPetrifiedWood"));
 
 
 		recipesAirRune = new ArrayList();
